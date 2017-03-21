@@ -1,10 +1,15 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageButton;
 
+import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.adapter.DirectSeedingAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
+import com.xuchengpu.bilibili.bean.DirectSeedingTypeBean;
 
 import butterknife.BindView;
 
@@ -15,11 +20,16 @@ import butterknife.BindView;
  */
 
 public class DirectSeedingViewPager extends BaseViewPager {
-    @BindView(R.id.tv_directseeding)
-    TextView tvDirectseeding;
+
+
+    @BindView(R.id.rv_directseeding)
+    RecyclerView rvDirectseeding;
+    @BindView(R.id.ib_top)
+    ImageButton ibTop;
 
     public DirectSeedingViewPager(Context context) {
         super(context);
+
     }
 
 
@@ -30,7 +40,7 @@ public class DirectSeedingViewPager extends BaseViewPager {
 
     @Override
     protected String getChildUrl() {
-        return null;
+        return "http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=xxhdpi&ts=1490021691000&sign=f283ef788f4b302d0d1783e3f3e98aa4";
     }
 
     @Override
@@ -40,7 +50,15 @@ public class DirectSeedingViewPager extends BaseViewPager {
 
     @Override
     public void initData(String json) {
-        tvDirectseeding.setText("DirectSeedingViewPager");
+        DirectSeedingTypeBean bean= JSON.parseObject(json,DirectSeedingTypeBean.class);
+        DirectSeedingTypeBean.DataBean data = bean.getData();
+
+
+        DirectSeedingAdapter adapter=new DirectSeedingAdapter(mContext,data);
+
+        rvDirectseeding.setAdapter(adapter);
+        rvDirectseeding.setLayoutManager(new LinearLayoutManager(mContext));
+
     }
 
 }

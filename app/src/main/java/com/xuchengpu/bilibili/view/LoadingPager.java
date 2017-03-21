@@ -101,13 +101,13 @@ public abstract class LoadingPager extends FrameLayout {
         RequestMethod.getDataFromNet(url, new TransferData() {
             @Override
             public void onsucess(String data) {
-                Log.e("tag", " AsyncHttpClient onSuccess thread== "+Thread.currentThread().getName());
+
                 if (TextUtils.isEmpty(data)) {
-//                    Log.e("tag","EMPTY  onSuccess=="+content);
+//                    Log.e("tag","EMPTY  onSuccess=="+data);
                     resultState = ResultState.EMPTY;
                     resultState.setJson(data);
                 } else {
-//                    Log.e("tag","SUCCESS  onSuccess=="+content);
+                    Log.e("tag","SUCCESS  onSuccess=="+data);
                     resultState = ResultState.SUCCESS;
                     resultState.setJson(data);
                 }
@@ -116,7 +116,7 @@ public abstract class LoadingPager extends FrameLayout {
 
             @Override
             public void failure(String data) {
-
+//                Log.e("tag","SUCCESS  failure=="+data);
                 resultState = ResultState.ERROR;
                 resultState.setJson(data);
 

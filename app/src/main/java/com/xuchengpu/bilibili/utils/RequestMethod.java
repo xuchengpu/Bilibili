@@ -1,7 +1,5 @@
 package com.xuchengpu.bilibili.utils;
 
-import android.util.Log;
-
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -23,17 +21,17 @@ public class RequestMethod {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Log.e("tag","联网请求失败=="+e.getMessage());
+//                        Log.e("tag","联网请求失败=="+e.getMessage());
                         if(transferData!=null) {
-                            transferData.onsucess(e.getMessage());
+                            transferData.failure(e.getMessage());
                         }
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.e("tag","联网请求成功=="+response);
+//                        Log.e("tag","联网请求成功=="+response);
                         if(transferData!=null) {
-                            transferData.failure(response);
+                            transferData.onsucess(response);
                         }
                     }
                 });

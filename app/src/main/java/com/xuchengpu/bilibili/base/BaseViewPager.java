@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.base;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import com.xuchengpu.bilibili.view.LoadingPager;
@@ -38,7 +39,7 @@ public abstract class BaseViewPager {
             protected void onSucess(LoadingPager.ResultState resultState, View sucessView) {
                 ButterKnife.bind(BaseViewPager.this, sucessView);
                 initData(resultState.getJson());
-
+                Log.e("tag","BaseViewPager-initView-onSucess=="+resultState.getJson());
                 initListener();
             }
 
