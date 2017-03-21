@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dl_left"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_drawer_home"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_drawer_home"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.xuchengpu.bilibili.view.CircleImageView
+                android:id="@+id/top_head"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_margin="10dp"
+                app:border_color="@android:color/white"
+                android:src="@drawable/recharge_ic_success"
+                app:border_width="1dp" />
+            <ImageView
+                android:id="@+id/iv_new_feature_pink_dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/top_head"
+                android:layout_alignRight="@id/top_head"
+                android:src="@drawable/ic_new_feature_pink_dot"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:layout_height="wrap_content"
+            android:text="未登录"/>
+        <ImageView
+            android:id="@+id/iv_menu_top_game_center"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_menu_top_game_center"/>
+        <ImageView
+            android:id="@+id/iv_toolbar_menu_download"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_toolbar_menu_download"/>
+        <ImageView
+            android:id="@+id/iv_download_search"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_download_search"/>
+
+
+    </LinearLayout>
+    <!--  <include layout="@layout/drawer_layout" />-->
+</LinearLayout>
