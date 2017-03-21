@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,17 +14,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.adapter.MainViewPagerAdapter;
+import com.xuchengpu.bilibili.base.BasePager;
 import com.xuchengpu.bilibili.view.CircleImageView;
+import com.xuchengpu.bilibili.viewpager.ChaseViewPager;
+import com.xuchengpu.bilibili.viewpager.DirectSeedingViewPager;
+import com.xuchengpu.bilibili.viewpager.DiscoverViewPager;
+import com.xuchengpu.bilibili.viewpager.PartitionViewPager;
+import com.xuchengpu.bilibili.viewpager.RecommandViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.navigation_view)
-    NavigationView navigationView;
-    @BindView(R.id.activity_main)
-    DrawerLayout activityMain;
+
     @BindView(R.id.iv_drawer_home)
     ImageView ivDrawerHome;
     @BindView(R.id.top_head)
@@ -40,10 +48,17 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout dlLeft;
     @BindView(R.id.tablayout)
     TabLayout tablayout;
-    @BindView(R.id.activity_toolbar)
-    CoordinatorLayout activityToolbar;
     @BindView(R.id.view_pager_main)
     ViewPager viewPagerMain;
+    @BindView(R.id.activity_toolbar)
+    CoordinatorLayout activityToolbar;
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+    @BindView(R.id.activity_main)
+    DrawerLayout activityMain;
+    private ArrayList<BasePager> basePagers;
+    private String[] titles = {"直播", "推荐", "追番", "分区", "发现"};
+    private List<Fragment> fragments;
 
 
     @Override
@@ -57,16 +72,47 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initView();
+        initViewPager();
+        setAdapter();
+        initListener();
 
 
     }
 
-    private void initView() {
-        navigationView.setItemIconTintList(null);
+    private void initListener() {
+
+    }
+
+    private void setAdapter() {
+        MainViewPagerAdapter adapter = new MainViewPagerAdapter(basePagers,titles);
+//        MainFragmentAdapter adapter = new MainFragmentAdapter(getSupportFragmentManager(), fragments, titles);
+        viewPagerMain.setAdapter(adapter);
         //关联viewpager
         tablayout.setupWithViewPager(viewPagerMain);
         //滚动模式
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
+    }
+
+    private void initViewPager() {
+        basePagers=new ArrayList<>();
+        basePagers.add(new DirectSeedingViewPager(this));
+        basePagers.add(new RecommandViewPager(this));
+        basePagers.add(new ChaseViewPager(this));
+        basePagers.add(new PartitionViewPager(this));
+        basePagers.add(new DiscoverViewPager(this));
+       /* fragments = new ArrayList<>();
+        fragments.add(new fragment1());
+        fragments.add(new fragment2());
+        fragments.add(new fragment3());
+        fragments.add(new fragment4());
+        fragments.add(new fragment5());
+*/
+    }
+
+    private void initView() {
+        navigationView.setItemIconTintList(null);
 
     }
 }
