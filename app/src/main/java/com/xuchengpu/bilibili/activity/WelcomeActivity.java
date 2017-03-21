@@ -34,7 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-
+                finish();
             }
         });
     }
