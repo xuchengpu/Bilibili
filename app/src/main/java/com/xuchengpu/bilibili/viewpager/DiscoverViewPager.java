@@ -1,10 +1,12 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
-import android.view.View;
+import android.widget.TextView;
 
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.base.BasePager;
+import com.xuchengpu.bilibili.base.BaseViewPager;
+
+import butterknife.BindView;
 
 /**
  * Created by 许成谱 on 2017/3/21 15:45.
@@ -12,19 +14,33 @@ import com.xuchengpu.bilibili.base.BasePager;
  * for:
  */
 
-public class DiscoverViewPager extends BasePager{
+public class DiscoverViewPager extends BaseViewPager {
+    @BindView(R.id.tv_discover)
+    TextView tvDiscover;
+
     public DiscoverViewPager(Context context) {
         super(context);
     }
 
+
     @Override
-    public View initView() {
-        View view=View.inflate(mContext, R.layout.discover,null);
-        return view;
+    protected int getChildLayoutId() {
+        return R.layout.discover;
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    protected String getChildUrl() {
+        return null;
     }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void initData(String json) {
+        tvDiscover.setText("tvDiscover");
+    }
+
 }

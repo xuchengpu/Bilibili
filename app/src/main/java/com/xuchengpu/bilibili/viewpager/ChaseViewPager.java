@@ -1,10 +1,12 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
-import android.view.View;
+import android.widget.TextView;
 
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.base.BasePager;
+import com.xuchengpu.bilibili.base.BaseViewPager;
+
+import butterknife.BindView;
 
 /**
  * Created by 许成谱 on 2017/3/21 15:45.
@@ -12,19 +14,33 @@ import com.xuchengpu.bilibili.base.BasePager;
  * for:
  */
 
-public class ChaseViewPager extends BasePager{
+public class ChaseViewPager extends BaseViewPager {
+    @BindView(R.id.tv_chase)
+    TextView tvChase;
+
     public ChaseViewPager(Context context) {
         super(context);
     }
 
+
     @Override
-    public View initView() {
-        View view=View.inflate(mContext, R.layout.chase,null);
-        return view;
+    protected int getChildLayoutId() {
+        return R.layout.chase;
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    protected String getChildUrl() {
+        return null;
     }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void initData(String json) {
+        tvChase.setText("zhuifan");
+    }
+
 }

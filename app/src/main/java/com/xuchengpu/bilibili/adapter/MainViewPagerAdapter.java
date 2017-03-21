@@ -4,7 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xuchengpu.bilibili.base.BasePager;
+import com.xuchengpu.bilibili.base.BaseViewPager;
 
 import java.util.ArrayList;
 
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class MainViewPagerAdapter extends PagerAdapter {
 
-    private final ArrayList<BasePager> data;
+    private final ArrayList<BaseViewPager> data;
     private final String[] titles;
 
-    public MainViewPagerAdapter(ArrayList<BasePager> basePagers, String[] titles) {
+    public MainViewPagerAdapter(ArrayList<BaseViewPager> basePagers, String[] titles) {
         this.data=basePagers;
         this.titles=titles;
     }
@@ -31,7 +31,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        BasePager basePager=data.get(position);
+        BaseViewPager basePager=data.get(position);
         View view = basePager.rootView;
         container.addView(view);
         return view;

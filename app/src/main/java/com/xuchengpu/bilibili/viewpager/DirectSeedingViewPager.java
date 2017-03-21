@@ -1,10 +1,12 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
-import android.view.View;
+import android.widget.TextView;
 
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.base.BasePager;
+import com.xuchengpu.bilibili.base.BaseViewPager;
+
+import butterknife.BindView;
 
 /**
  * Created by 许成谱 on 2017/3/21 15:45.
@@ -12,19 +14,33 @@ import com.xuchengpu.bilibili.base.BasePager;
  * for:
  */
 
-public class DirectSeedingViewPager extends BasePager{
+public class DirectSeedingViewPager extends BaseViewPager {
+    @BindView(R.id.tv_directseeding)
+    TextView tvDirectseeding;
+
     public DirectSeedingViewPager(Context context) {
         super(context);
     }
 
+
     @Override
-    public View initView() {
-        View view=View.inflate(mContext, R.layout.directseeding,null);
-        return view;
+    protected int getChildLayoutId() {
+        return R.layout.directseeding;
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    protected String getChildUrl() {
+        return null;
     }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void initData(String json) {
+        tvDirectseeding.setText("DirectSeedingViewPager");
+    }
+
 }
