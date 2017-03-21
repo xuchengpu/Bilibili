@@ -33,5 +33,6 @@ public class MainActivity extends SlidingFragmentActivity {
 
         //6.设置主页面占的宽度dip
         slidingMenu.setBehindOffset(DensityUtil.dip2px(this, 200));
+
     }
 }
