@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gridview_entranceicons_shape"
+    android:orientation="vertical"
+
+    >
+
+    <ImageView
+        android:id="@+id/iv_item_gridview_entranceicons"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/preloading" />
+
+    <TextView
+        android:id="@+id/tv_desc_item_gridview_entranceicons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_item_gridview_entranceicons"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="送你一份超大胖次，日系卡牌绘制"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_item_gridview_entranceicons"
+        android:layout_marginTop="35dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_name_item_gridview_entranceicons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="我叫小薇"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_eye_item_gridview_entranceicons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="25"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/tv_eye_item_gridview_entranceicons"
+            android:background="#44000000"
+            android:src="@drawable/ic_promo_index_live_views" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

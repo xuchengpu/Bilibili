@@ -5,12 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.bean.DirectSeedingTypeBean;
+import com.xuchengpu.bilibili.view.CircleImageView;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 import com.youth.banner.transformer.ZoomOutSlideTransformer;
@@ -39,6 +43,7 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
     public static final int entranceIcons = 1;
 
 
+
     private int currentType = BANNER;
     private final LayoutInflater inflater;
 
@@ -62,7 +67,7 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == BANNER) {
             return new BannerViewHolder(inflater.inflate(R.layout.item_banner, null));
-        }else  if(viewType==entranceIcons) {
+        } else if (viewType == entranceIcons) {
             return new EntranceIconsViewHolder(inflater.inflate(R.layout.item_entranceicons, null));
         }
 
@@ -71,9 +76,13 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(getItemViewType(position)==BANNER) {
+        if (getItemViewType(position) == BANNER) {
             BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
             bannerViewHolder.setData(datas.getBanner());
+        } else if (getItemViewType(position) == entranceIcons) {
+            EntranceIconsViewHolder entranceViewHolder = (EntranceIconsViewHolder) holder;
+            entranceViewHolder.setData(datas.getPartitions().get(position-1));
+
         }
 
     }
@@ -100,15 +109,16 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
 
         public BannerViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
-        void setData(List<DirectSeedingTypeBean.DataBean.BannerBean> banner_info){
+
+        void setData(List<DirectSeedingTypeBean.DataBean.BannerBean> banner_info) {
             List images = new ArrayList();
             for (int i = 0; i < banner_info.size(); i++) {
-                images.add( banner_info.get(i).getImg());
-                images.add( banner_info.get(i).getImg());
-                images.add( banner_info.get(i).getImg());
-                images.add( banner_info.get(i).getImg());
+                images.add(banner_info.get(i).getImg());
+                images.add(banner_info.get(i).getImg());
+                images.add(banner_info.get(i).getImg());
+                images.add(banner_info.get(i).getImg());
             }
             banner.setImages(images)
                     .setImageLoader(new ImageLoader() {
@@ -127,10 +137,48 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
         }
 
     }
-    class EntranceIconsViewHolder extends RecyclerView.ViewHolder{
+
+    class EntranceIconsViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.iv_drawer_entranceicons)
+        ImageView ivDrawerEntranceicons;
+        @BindView(R.id.tv_entranceicons_name)
+        TextView tvEntranceiconsName;
+        @BindView(R.id.tv_total)
+        TextView tvTotal;
+        @BindView(R.id.gv_entranceicons)
+        GridView gv;
+        @BindView(R.id.tv_more_entranceicons)
+        TextView tvMoreEntranceicons;
+        @BindView(R.id.tv_dynamic_entranceicons)
+        TextView tvDynamicEntranceicons;
+        @BindView(R.id.iv_refresh_entranceicons)
+        CircleImageView ivRefreshEntranceicons;
 
         public EntranceIconsViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+
+        public void setData(DirectSeedingTypeBean.DataBean.PartitionsBean partitionsBean) {
+            Glide.with(mContext).load(partitionsBean.getPartition().getSub_icon().getSrc()).into(ivDrawerEntranceicons);
+            tvEntranceiconsName.setText(partitionsBean.getPartition().getName());
+            tvTotal.setText("当前"+partitionsBean.getPartition().getCount()+"个直播");
+            tvDynamicEntranceicons.setText(partitionsBean.getPartition().getCount()+18+"条新动态，点击刷新");
+            tvDynamicEntranceicons.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "点击刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvMoreEntranceicons.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "加载更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+            EntranceIconsGridViewAdapter adapter=new EntranceIconsGridViewAdapter(mContext,partitionsBean.getLives());
+            gv.setAdapter(adapter);
+
         }
     }
 }
