@@ -52,10 +52,7 @@ public class DirectSeedingViewPager extends BaseViewPager {
     public void initData(String json) {
         DirectSeedingTypeBean bean= JSON.parseObject(json,DirectSeedingTypeBean.class);
         DirectSeedingTypeBean.DataBean data = bean.getData();
-
-
         DirectSeedingAdapter adapter=new DirectSeedingAdapter(mContext,data);
-
         rvDirectseeding.setAdapter(adapter);
         rvDirectseeding.setLayoutManager(new LinearLayoutManager(mContext));
 

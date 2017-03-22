@@ -1,14 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_discover"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="#000"
-        android:textSize="30sp"
-        android:text="发现"
-        android:gravity="center"/>
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_search_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_hint_search"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/scan"
+            android:hint="搜索视频、番剧、up主或av号"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="大家都在搜"
+            android:textSize="16sp" />
+
+        <ScrollView
+            android:id="@+id/sl_content_discover"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/id_flowlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                zhy:max_select="-1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="40dp"
+                android:background="#44000000" />
+
+            <TextView
+                android:clickable="true"
+                android:id="@+id/tv_more_discover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:drawableLeft="@drawable/ic_arrow_down"
+                android:drawablePadding="5dp"
+                android:textSize="14sp"
+                android:text="查看更多" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:background="#44000000" />
+        </LinearLayout>
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_interest_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_group"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="兴趣圈"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_topiccenter_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_header_topic_center"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="话题中心"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_activity_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_header_activity_center"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="活动中心"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_smallhouse_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_header_black_list_center"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="小黑屋"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_origin_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_btn_rank_original"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_light_gray_arrow_right"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:paddingTop="8dp"
+            android:text="原创排行榜"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_allarea_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_btn_rank_all"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_light_gray_arrow_right"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:paddingTop="8dp"
+            android:text="全区排行榜"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:clickable="true"
+                android:id="@+id/tv_gamecenter_discover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:drawableLeft="@drawable/ic_btn_game"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="8dp"
+                android:text="游戏中心"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_gameinfo_discover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/ic_new_feature_pink_dot"
+                android:paddingRight="10dp"
+                android:text="《FGO》联动《空之境界》！" />
+        </RelativeLayout>
+
+        <TextView
+            android:clickable="true"
+            android:id="@+id/tv_shoppingmall_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#fff"
+            android:drawableLeft="@drawable/ic_btn_shop"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="周边商城"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
