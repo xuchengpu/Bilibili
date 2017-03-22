@@ -7,11 +7,13 @@ import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.MainActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.DiscoverTagBean;
 import com.xuchengpu.bilibili.utils.UiUtils;
@@ -58,9 +60,13 @@ public class DiscoverViewPager extends BaseViewPager {
     TextView tvGameinfoDiscover;
     @BindView(R.id.tv_shoppingmall_discover)
     TextView tvShoppingmallDiscover;
+    @BindView(R.id.iv_scan_discover)
+    ImageView ivScanDiscover;
     private String[] array;
     private TagAdapter<String> mAdapter;
-    private boolean isMore=true;
+    private boolean isMore = true;
+    private MainActivity mainActivity;
+
 
     public DiscoverViewPager(Context context) {
         super(context);
@@ -123,33 +129,36 @@ public class DiscoverViewPager extends BaseViewPager {
     }
 
 
-    @OnClick({R.id.tv_search_discover, R.id.tv_more_discover, R.id.tv_interest_discover, R.id.tv_topiccenter_discover, R.id.tv_activity_discover, R.id.tv_smallhouse_discover, R.id.tv_origin_discover, R.id.tv_allarea_discover, R.id.tv_gamecenter_discover, R.id.tv_gameinfo_discover, R.id.tv_shoppingmall_discover})
+    @OnClick({R.id.tv_search_discover,R.id.iv_scan_discover, R.id.tv_more_discover, R.id.tv_interest_discover, R.id.tv_topiccenter_discover, R.id.tv_activity_discover, R.id.tv_smallhouse_discover, R.id.tv_origin_discover, R.id.tv_allarea_discover, R.id.tv_gamecenter_discover, R.id.tv_gameinfo_discover, R.id.tv_shoppingmall_discover})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search_discover:
+                mainActivity= (MainActivity) mContext;
+                mainActivity.getPopupWindow();
+
                 break;
             case R.id.tv_more_discover:
-                if(isMore) {
-                    isMore=false;
+                if (isMore) {
+                    isMore = false;
                     tvMoreDiscover.setText("收起");
                     tvMoreDiscover.setTextColor(Color.BLACK);
                     tvMoreDiscover.setTextSize(UiUtils.dp2px(10));
                     Drawable leftDrawable = mContext.getResources().getDrawable(R.drawable.ic_arrow_up);
-                    leftDrawable.setBounds(0,0,leftDrawable.getMinimumWidth(),leftDrawable.getMinimumHeight());
-                    tvMoreDiscover.setCompoundDrawables(leftDrawable,null,null,null);
+                    leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
+                    tvMoreDiscover.setCompoundDrawables(leftDrawable, null, null, null);
                     ViewGroup.LayoutParams layoutParams = slContentDiscover.getLayoutParams();
-                    layoutParams.height=250;
+                    layoutParams.height = 250;
                     slContentDiscover.setLayoutParams(layoutParams);
-                }else{
-                    isMore=true;
+                } else {
+                    isMore = true;
                     tvMoreDiscover.setText("加载更多");
                     tvMoreDiscover.setTextColor(Color.BLACK);
                     tvMoreDiscover.setTextSize(UiUtils.dp2px(10));
                     Drawable leftDrawable = mContext.getResources().getDrawable(R.drawable.ic_arrow_down);
-                    leftDrawable.setBounds(0,0,leftDrawable.getMinimumWidth(),leftDrawable.getMinimumHeight());
-                    tvMoreDiscover.setCompoundDrawables(leftDrawable,null,null,null);
+                    leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
+                    tvMoreDiscover.setCompoundDrawables(leftDrawable, null, null, null);
                     ViewGroup.LayoutParams layoutParams = slContentDiscover.getLayoutParams();
-                    layoutParams.height=100;
+                    layoutParams.height = 100;
                     slContentDiscover.setLayoutParams(layoutParams);
                 }
                 break;
@@ -171,6 +180,14 @@ public class DiscoverViewPager extends BaseViewPager {
                 break;
             case R.id.tv_shoppingmall_discover:
                 break;
+            case R.id.iv_scan_discover:
+                mainActivity = (MainActivity) mContext;
+                mainActivity.Scan();
+                break;
         }
     }
+
+
+
+
 }

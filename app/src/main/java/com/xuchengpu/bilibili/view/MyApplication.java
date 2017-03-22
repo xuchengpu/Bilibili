@@ -6,6 +6,8 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.util.Log;
 
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+
 /**
  * Created by 许成谱 on 2017/3/12 11:09.
  * qq:1550540124
@@ -45,6 +47,8 @@ public class MyApplication extends Application {
         //得到当前线程
         threadid = android.os.Process.myPid();
         handler = new Handler();
+        //二维码扫描功能
+        ZXingLibrary.initDisplayOpinion(this);
 
 //        CrashHandler.getCrashHandler().init();
     }

@@ -10,26 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:clickable="true"
-            android:id="@+id/tv_search_discover"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="12dp"
-            android:background="#fff"
-            android:drawableLeft="@drawable/ic_hint_search"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/ic_scan"
-            android:hint="搜索视频、番剧、up主或av号"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:id="@+id/tv_search_discover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="#fff"
+                android:drawableLeft="@drawable/ic_hint_search"
+                android:drawablePadding="10dp"
+                android:hint="搜索视频、番剧、up主或av号"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:textColor="#000"
+                android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/iv_scan_discover"
+                android:layout_alignRight="@+id/tv_search_discover"
+                android:layout_alignBottom="@+id/tv_search_discover"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_scan"/>
+
+        </RelativeLayout>
+
+
 
         <TextView
             android:clickable="true"
