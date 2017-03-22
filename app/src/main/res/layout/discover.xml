@@ -22,7 +22,7 @@
             android:background="#fff"
             android:drawableLeft="@drawable/ic_hint_search"
             android:drawablePadding="10dp"
-            android:drawableRight="@drawable/scan"
+            android:drawableRight="@drawable/ic_scan"
             android:hint="搜索视频、番剧、up主或av号"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
@@ -42,7 +42,7 @@
             android:text="大家都在搜"
             android:textSize="16sp" />
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:id="@+id/sl_content_discover"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -57,7 +57,7 @@
                 zhy:max_select="-1"></com.zhy.view.flowlayout.TagFlowLayout>
 
 
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,9 +82,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:textColor="#000000"
                 android:drawableLeft="@drawable/ic_arrow_down"
                 android:drawablePadding="5dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:text="查看更多" />
 
             <TextView
