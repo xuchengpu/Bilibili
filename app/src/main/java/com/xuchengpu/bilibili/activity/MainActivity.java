@@ -30,8 +30,8 @@ import com.xuchengpu.bilibili.view.CircleImageView;
 import com.xuchengpu.bilibili.viewpager.ChaseViewPager;
 import com.xuchengpu.bilibili.viewpager.DirectSeedingViewPager;
 import com.xuchengpu.bilibili.viewpager.DiscoverViewPager;
-import com.xuchengpu.bilibili.viewpager.PartitionViewPager;
-import com.xuchengpu.bilibili.viewpager.RecommandViewPager;
+import com.xuchengpu.bilibili.viewpager.partition.PartitionViewPager;
+import com.xuchengpu.bilibili.viewpager.recommand.RecommandViewPager;
 
 import java.util.ArrayList;
 
@@ -149,13 +149,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     /***
      * 获取PopupWindow实例
      */
     public void getPopupWindow() {
 
         if (null != window) {
-//            closePopupWindow();
+            closePopupWindow();
             return;
         } else {
             initPopuptWindow();
@@ -165,18 +166,18 @@ public class MainActivity extends AppCompatActivity {
     public void initPopuptWindow() {
         //1、利用layoutInflater获得View
 
-        LayoutInflater inflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.popupwindow_search,null);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.popupwindow_search, null);
 
         //2、两种方法得到宽度和高度 getWindow().getDecorView().getWidth()
 
-        window = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
         // 3、 参数设置
         // 设置popWindow弹出窗体可点击，这句话必须添加，并且是true
         window.setFocusable(true);
         // 实例化一个ColorDrawable颜色为半透明
-        ColorDrawable cw=new ColorDrawable(0xFFFFFFFF);
+        ColorDrawable cw = new ColorDrawable(0xFFFFFFFF);
         window.setBackgroundDrawable(cw);
         // 设置popWindow的显示和消失动画
         window.setAnimationStyle(R.style.mypopwindow_anim_style);
@@ -184,16 +185,16 @@ public class MainActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new BitmapDrawable());
         window.setOutsideTouchable(true);
         //设置其他区域半透明
-        WindowManager.LayoutParams params=getWindow().getAttributes();
-        params.alpha=0.6f;
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+        params.alpha = 0.6f;
         getWindow().setAttributes(params);
         //消失后恢复
         window.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 window = null;
-                WindowManager.LayoutParams params=getWindow().getAttributes();
-                params.alpha=1f;
+                WindowManager.LayoutParams params = getWindow().getAttributes();
+                params.alpha = 1f;
                 getWindow().setAttributes(params);
             }
         });
@@ -205,6 +206,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 关闭窗口
+     */
+    private void closePopupWindow() {
+        if (window != null && window.isShowing()) {
+            window.dismiss();
+            window = null;
+            WindowManager.LayoutParams params =getWindow().getAttributes();
+            params.alpha = 1f;
+            getWindow().setAttributes(params);
+        }
+    }
 
 
     @OnClick({R.id.iv_drawer_home, R.id.top_head, R.id.iv_new_feature_pink_dot, R.id.iv_menu_top_game_center, R.id.iv_toolbar_menu_download, R.id.iv_download_search})
@@ -221,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.iv_toolbar_menu_download:
                 break;
             case R.id.iv_download_search:
-                initPopuptWindow();
+                getPopupWindow();
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.xuchengpu.bilibili.adapter;
+package com.xuchengpu.bilibili.adapter.directseedingadapter;
 
 import android.content.Context;
 import android.view.View;

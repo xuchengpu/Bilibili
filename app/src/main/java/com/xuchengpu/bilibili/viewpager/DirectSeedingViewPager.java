@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.adapter.DirectSeedingAdapter;
+import com.xuchengpu.bilibili.adapter.directseedingadapter.DirectSeedingAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.DirectSeedingTypeBean;
 
