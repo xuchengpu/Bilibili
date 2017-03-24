@@ -24,6 +24,7 @@ import butterknife.BindView;
 public class DirectSeedingViewPager extends BaseViewPager {
 
 
+
     @BindView(R.id.rv_directseeding)
     RecyclerView rvDirectseeding;
     @BindView(R.id.ib_top)
