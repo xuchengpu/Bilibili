@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageButton;
@@ -27,6 +28,8 @@ public class DirectSeedingViewPager extends BaseViewPager {
     RecyclerView rvDirectseeding;
     @BindView(R.id.ib_top)
     ImageButton ibTop;
+    @BindView(R.id.swipe_directseeding)
+    SwipeRefreshLayout swipeDirectseeding;
 
     public DirectSeedingViewPager(Context context) {
         super(context);
@@ -46,14 +49,14 @@ public class DirectSeedingViewPager extends BaseViewPager {
 
     @Override
     public void initListener() {
-
+        refresh(swipeDirectseeding);
     }
 
     @Override
     public void initData(String json) {
-        DirectSeedingTypeBean bean= JSON.parseObject(json,DirectSeedingTypeBean.class);
+        DirectSeedingTypeBean bean = JSON.parseObject(json, DirectSeedingTypeBean.class);
         DirectSeedingTypeBean.DataBean data = bean.getData();
-        DirectSeedingAdapter adapter=new DirectSeedingAdapter(mContext,data);
+        DirectSeedingAdapter adapter = new DirectSeedingAdapter(mContext, data);
         rvDirectseeding.setAdapter(adapter);
         rvDirectseeding.setLayoutManager(new LinearLayoutManager(mContext));
 

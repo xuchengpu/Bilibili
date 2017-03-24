@@ -1,11 +1,13 @@
 package com.xuchengpu.bilibili.view;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.utils.RequestMethod;
@@ -89,7 +91,7 @@ public abstract class LoadingPager extends FrameLayout {
 
     }
     //这个方法由basefragment在activitycreated之后加载
-    public void loadData() {
+    public void loadData(final SwipeRefreshLayout swView) {
         String url = getUrl();
         //这是为投资等其他几个不用请求数据的fragment页面准备的 跳过请求数据这一段
         if(TextUtils.isEmpty(url)) {
@@ -101,6 +103,10 @@ public abstract class LoadingPager extends FrameLayout {
         RequestMethod.getDataFromNet(url, new TransferData() {
             @Override
             public void onsucess(String data) {
+                if(swView!=null) {
+                    swView.setRefreshing(false);
+                    Toast.makeText(mContext, "刷新完成", Toast.LENGTH_SHORT).show();
+                }
 
                 if (TextUtils.isEmpty(data)) {
 //                    Log.e("tag","EMPTY  onSuccess=="+data);
@@ -116,6 +122,10 @@ public abstract class LoadingPager extends FrameLayout {
 
             @Override
             public void failure(String data) {
+                if(swView!=null) {
+                    swView.setRefreshing(false);
+                    Toast.makeText(mContext, "网络异常，刷新失败", Toast.LENGTH_SHORT).show();
+                }
 //                Log.e("tag","SUCCESS  failure=="+data);
                 resultState = ResultState.ERROR;
                 resultState.setJson(data);

@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager.partition;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -29,6 +30,8 @@ public class PartitionViewPager extends BaseViewPager {
 
     @BindView(R.id.recycleview_partition)
     RecyclerView recyclerView;
+    @BindView(R.id.swipe_partition)
+    SwipeRefreshLayout swipePartition;
 
     public PartitionViewPager(Context context) {
         super(context);
@@ -47,7 +50,7 @@ public class PartitionViewPager extends BaseViewPager {
 
     @Override
     public void initListener() {
-
+        refresh(swipePartition);
     }
 
     @Override
@@ -75,10 +78,13 @@ public class PartitionViewPager extends BaseViewPager {
     }
 
     private void getAnotherData(final List<PartitonGridViewBean.DataBean> dataBeen) {
-        String urlList =ConstantUtils.PARTITION_LIST;
+        String urlList = ConstantUtils.PARTITION_LIST;
         RequestMethod.getDataFromNet(urlList, new TransferData() {
             @Override
             public void onsucess(String data) {
+                if(swipePartition!=null) {
+                    swipePartition.setRefreshing(false);
+                }
                 PartitionRecycleViewBean bean = JSON.parseObject(data, PartitionRecycleViewBean.class);
                 List<PartitionRecycleViewBean.DataBean> data1 = bean.getData();
                 setRecycleAdapter(dataBeen, data1);

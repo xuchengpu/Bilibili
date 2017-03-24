@@ -130,11 +130,11 @@ public class DiscoverViewPager extends BaseViewPager {
     }
 
 
-    @OnClick({R.id.tv_search_discover,R.id.iv_scan_discover, R.id.tv_more_discover, R.id.tv_interest_discover, R.id.tv_topiccenter_discover, R.id.tv_activity_discover, R.id.tv_smallhouse_discover, R.id.tv_origin_discover, R.id.tv_allarea_discover, R.id.tv_gamecenter_discover, R.id.tv_gameinfo_discover, R.id.tv_shoppingmall_discover})
+    @OnClick({R.id.tv_search_discover, R.id.iv_scan_discover, R.id.tv_more_discover, R.id.tv_interest_discover, R.id.tv_topiccenter_discover, R.id.tv_activity_discover, R.id.tv_smallhouse_discover, R.id.tv_origin_discover, R.id.tv_allarea_discover, R.id.tv_gamecenter_discover, R.id.tv_gameinfo_discover, R.id.tv_shoppingmall_discover})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search_discover:
-                mainActivity= (MainActivity) mContext;
+                mainActivity = (MainActivity) mContext;
                 mainActivity.getPopupWindow();
 
                 break;
@@ -187,8 +187,6 @@ public class DiscoverViewPager extends BaseViewPager {
                 break;
         }
     }
-
-
 
 
 }

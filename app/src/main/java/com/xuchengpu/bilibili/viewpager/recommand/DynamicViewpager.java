@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager.recommand;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.adapter.recommandadapter.ComprehensiveRecycleViewadapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.RecommandComprehensiveBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class DynamicViewpager extends BaseViewPager {
 
     @BindView(R.id.recycleview_comprehensive_recommand)
     RecyclerView recyclerView;
+    @BindView(R.id.swipe_comprehensive_recommand)
+    SwipeRefreshLayout swipeComprehensiveRecommand;
 
     public DynamicViewpager(Context context) {
         super(context);
@@ -32,16 +36,17 @@ public class DynamicViewpager extends BaseViewPager {
     @Override
     protected int getChildLayoutId() {
 //        return R.layout.dyamic;
-          return R.layout.comprehensive;
+        return R.layout.comprehensive;
     }
+
     @Override
     protected String getChildUrl() {
-        return "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
+        return ConstantUtils.COMPREHENSIVE_VIEWPAGER;
     }
 
     @Override
     public void initListener() {
-
+        refresh(swipeComprehensiveRecommand);
     }
 
     @Override
@@ -54,9 +59,9 @@ public class DynamicViewpager extends BaseViewPager {
     }
 
     private void setAdapter(List<RecommandComprehensiveBean.DataBean> data) {
-        ComprehensiveRecycleViewadapter adapter=new ComprehensiveRecycleViewadapter(mContext,data);
+        ComprehensiveRecycleViewadapter adapter = new ComprehensiveRecycleViewadapter(mContext, data);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
 
     }
 

@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -26,6 +27,8 @@ public class ChaseViewPager extends BaseViewPager {
 
     @BindView(R.id.rv_chase)
     RecyclerView rvChase;
+    @BindView(R.id.swipe_chase)
+    SwipeRefreshLayout swipeChase;
 
     public ChaseViewPager(Context context) {
         super(context);
@@ -44,17 +47,17 @@ public class ChaseViewPager extends BaseViewPager {
 
     @Override
     public void initListener() {
-
+        refresh(swipeChase);
     }
 
     @Override
     public void initData(String json) {
-        ChaseBean bean= JSON.parseObject(json,ChaseBean.class);
+        ChaseBean bean = JSON.parseObject(json, ChaseBean.class);
         ChaseBean.ResultBean result = bean.getResult();
         List<ChaseBean.ResultBean.AdBean.HeadBean> head = result.getAd().getHead();
         ChaseBean.ResultBean.PreviousBean previous = result.getPrevious();
         List<ChaseBean.ResultBean.SerializingBean> serializing = result.getSerializing();
-        if(result!=null) {
+        if (result != null) {
             setAdapter(result);
         }
 
@@ -62,7 +65,7 @@ public class ChaseViewPager extends BaseViewPager {
     }
 
     private void setAdapter(ChaseBean.ResultBean result) {
-        ChaseAdapter adapter=new ChaseAdapter(mContext,result);
+        ChaseAdapter adapter = new ChaseAdapter(mContext, result);
         rvChase.setAdapter(adapter);
         rvChase.setLayoutManager(new LinearLayoutManager(mContext));
     }

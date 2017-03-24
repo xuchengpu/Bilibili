@@ -57,22 +57,23 @@
             android:text="大家都在搜"
             android:textSize="16sp" />
 
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/sl_content_discover"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/id_flowlayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                zhy:max_select="-1"></com.zhy.view.flowlayout.TagFlowLayout>
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/sl_content_discover"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
 
-        </android.support.v4.widget.NestedScrollView>
+                    <com.zhy.view.flowlayout.TagFlowLayout
+                        android:id="@+id/id_flowlayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        zhy:max_select="-1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
 
         <LinearLayout
             android:layout_width="match_parent"

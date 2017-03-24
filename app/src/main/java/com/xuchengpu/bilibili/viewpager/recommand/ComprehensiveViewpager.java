@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager.recommand;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -25,6 +26,8 @@ public class ComprehensiveViewpager extends BaseViewPager {
 
     @BindView(R.id.recycleview_comprehensive_recommand)
     RecyclerView recyclerView;
+    @BindView(R.id.swipe_comprehensive_recommand)
+    SwipeRefreshLayout swipeComprehensiveRecommand;
 
     public ComprehensiveViewpager(Context context) {
         super(context);
@@ -37,12 +40,12 @@ public class ComprehensiveViewpager extends BaseViewPager {
 
     @Override
     protected String getChildUrl() {
-       return ConstantUtils.COMPREHENSIVE_VIEWPAGER;
+        return ConstantUtils.COMPREHENSIVE_VIEWPAGER;
     }
 
     @Override
     public void initListener() {
-
+        refresh(swipeComprehensiveRecommand);
     }
 
     @Override
@@ -55,9 +58,9 @@ public class ComprehensiveViewpager extends BaseViewPager {
     }
 
     private void setAdapter(List<RecommandComprehensiveBean.DataBean> data) {
-        ComprehensiveRecycleViewadapter adapter=new ComprehensiveRecycleViewadapter(mContext,data);
+        ComprehensiveRecycleViewadapter adapter = new ComprehensiveRecycleViewadapter(mContext, data);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
 
     }
 
