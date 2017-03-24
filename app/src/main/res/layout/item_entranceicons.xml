@@ -36,6 +36,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="26dp"
             android:text="当前共17个直播"
+            android:drawableRight="@drawable/ic_light_gray_arrow_right"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
     </RelativeLayout>
@@ -95,7 +96,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="16dp"
-
             android:background="@color/colorPink"
             android:src="@drawable/ic_promo_index_refresh" />
 
