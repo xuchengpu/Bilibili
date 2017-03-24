@@ -28,6 +28,10 @@ public class ComprehensiveViewpager extends BaseViewPager {
     RecyclerView recyclerView;
     @BindView(R.id.swipe_comprehensive_recommand)
     SwipeRefreshLayout swipeComprehensiveRecommand;
+    private GridLayoutManager gridLayoutManager;
+    private int lastVisibleItem;
+    private ComprehensiveRecycleViewadapter adapter;
+    private List<RecommandComprehensiveBean.DataBean> data;
 
     public ComprehensiveViewpager(Context context) {
         super(context);
@@ -46,21 +50,52 @@ public class ComprehensiveViewpager extends BaseViewPager {
     @Override
     public void initListener() {
         refresh(swipeComprehensiveRecommand);
+
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                //拖动停止时的状态  由于position是从零开始计数 所以要加1  表明是最后一条
+                if (newState == RecyclerView.SCROLL_STATE_IDLE&&lastVisibleItem+1==adapter.getItemCount()) {
+                    getMoreData();
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //记录最后一条item的位置  从0开始计数
+                lastVisibleItem = gridLayoutManager.findLastVisibleItemPosition();
+            }
+        });
     }
+
+    private void getMoreData() {
+        //此处可根据服务端接口自由定义
+        data.addAll(data);
+        adapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void initData(String json) {
         RecommandComprehensiveBean bean = JSON.parseObject(json, RecommandComprehensiveBean.class);
-        List<RecommandComprehensiveBean.DataBean> data = bean.getData();
+        data = bean.getData();
         if (data != null && data.size() > 0) {
             setAdapter(data);
         }
     }
 
     private void setAdapter(List<RecommandComprehensiveBean.DataBean> data) {
-        ComprehensiveRecycleViewadapter adapter = new ComprehensiveRecycleViewadapter(mContext, data);
+        adapter = new ComprehensiveRecycleViewadapter(mContext, data);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
+        gridLayoutManager = new GridLayoutManager(mContext, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
 
     }
 

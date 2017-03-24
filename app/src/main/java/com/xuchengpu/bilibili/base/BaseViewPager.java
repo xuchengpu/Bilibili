@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
+import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.view.LoadingPager;
 
 import butterknife.ButterKnife;
@@ -27,6 +28,7 @@ public abstract class BaseViewPager {
      * 代表各个详情页面的实例，视图
      */
     public View rootView;
+
 
     public BaseViewPager(Context context) {
         this.mContext = context;
@@ -64,15 +66,18 @@ public abstract class BaseViewPager {
         swView.setDistanceToTriggerSync(100);
         // 设置颜色
         swView.setColorSchemeColors(Color.BLACK, Color.RED);
+        swView.setColorSchemeResources(R.color.colorAccent);
         //设置背景颜色
-        swView.setProgressBackgroundColorSchemeResource(android.R.color.holo_orange_dark);
+        swView.setProgressBackgroundColorSchemeResource(R.color.white);
         // 下拉刷新
+
         swView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadingPager.loadData(swView);
+                    loadingPager.loadData(swView);
             }
         });
+
     }
 
     protected abstract int getChildLayoutId();
