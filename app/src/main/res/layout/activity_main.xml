@@ -96,6 +96,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:fitsSystemWindows="true"
+        android:overScrollMode="never"
+        android:background="@color/navigation_background_light"
         app:headerLayout="@layout/header_layout"
+
         app:menu="@menu/main"></android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

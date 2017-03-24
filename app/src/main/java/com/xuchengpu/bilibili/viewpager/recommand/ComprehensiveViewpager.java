@@ -9,6 +9,7 @@ import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.adapter.recommandadapter.ComprehensiveRecycleViewadapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.RecommandComprehensiveBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class ComprehensiveViewpager extends BaseViewPager {
 
     @Override
     protected String getChildUrl() {
-        return "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
+       return ConstantUtils.COMPREHENSIVE_VIEWPAGER;
     }
 
     @Override

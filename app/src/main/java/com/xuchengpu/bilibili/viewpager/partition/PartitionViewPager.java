@@ -10,6 +10,7 @@ import com.xuchengpu.bilibili.adapter.partition.PartitionRecycleViewAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.PartitionRecycleViewBean;
 import com.xuchengpu.bilibili.bean.PartitonGridViewBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 import com.xuchengpu.bilibili.utils.RequestMethod;
 import com.xuchengpu.bilibili.utils.TransferData;
 
@@ -55,7 +56,7 @@ public class PartitionViewPager extends BaseViewPager {
     }
 
     private void getJson() {
-        String urlChannel = "http://live.bilibili.com/AppIndex/areas?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=xxhdpi&ts=1490016232000&sign=678fafda8c1c1e2db3d8224c2b31044f";
+        String urlChannel = ConstantUtils.PARTITION_CHANNEL;
 
         RequestMethod.getDataFromNet(urlChannel, new TransferData() {
             @Override
@@ -74,7 +75,7 @@ public class PartitionViewPager extends BaseViewPager {
     }
 
     private void getAnotherData(final List<PartitonGridViewBean.DataBean> dataBeen) {
-        String urlList = "http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+        String urlList =ConstantUtils.PARTITION_LIST;
         RequestMethod.getDataFromNet(urlList, new TransferData() {
             @Override
             public void onsucess(String data) {

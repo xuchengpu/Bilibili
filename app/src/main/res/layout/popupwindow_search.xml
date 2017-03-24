@@ -5,7 +5,7 @@
 
     >
 
-    <TextView
+    <EditText
         android:gravity="center_vertical"
         android:clickable="true"
         android:id="@+id/tv_search_discover"
@@ -23,7 +23,7 @@
         android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:textColor="#000"
-        android:textSize="16sp"  />
+        android:textSize="14sp"  />
     <ImageView
         android:id="@+id/iv_scan_discover"
         android:layout_alignLeft="@+id/tv_search_discover"

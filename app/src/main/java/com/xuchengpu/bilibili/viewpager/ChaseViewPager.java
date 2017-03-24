@@ -9,6 +9,7 @@ import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.adapter.ChaseAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.ChaseBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ChaseViewPager extends BaseViewPager {
 
     @Override
     protected String getChildUrl() {
-        return "http://bangumi.bilibili.com/api/app_index_page_v4?build=3940&device=phone&mobi_app=iphone&platform=ios";
+        return ConstantUtils.CHASE_VIEWPAGER;
     }
 
     @Override

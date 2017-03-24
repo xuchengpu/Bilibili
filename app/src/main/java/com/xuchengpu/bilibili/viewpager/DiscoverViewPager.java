@@ -16,6 +16,7 @@ import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.activity.MainActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.DiscoverTagBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 import com.xuchengpu.bilibili.utils.UiUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -80,7 +81,7 @@ public class DiscoverViewPager extends BaseViewPager {
 
     @Override
     protected String getChildUrl() {
-        return "http://app.bilibili.com/x/v2/search/hot?appkey=1d8b6e7d45233436&build=501000&limit=50&mobi_app=android&platform=android&ts=1490014710000&sign=e5ddf94fa9a0d6876cb85756c37c4adc";
+        return ConstantUtils.DISCOVER_TAG;
     }
 
     @Override
@@ -142,23 +143,23 @@ public class DiscoverViewPager extends BaseViewPager {
                     isMore = false;
                     tvMoreDiscover.setText("收起");
                     tvMoreDiscover.setTextColor(Color.BLACK);
-                    tvMoreDiscover.setTextSize(UiUtils.dp2px(10));
+                    tvMoreDiscover.setTextSize(12);
                     Drawable leftDrawable = mContext.getResources().getDrawable(R.drawable.ic_arrow_up);
                     leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
                     tvMoreDiscover.setCompoundDrawables(leftDrawable, null, null, null);
                     ViewGroup.LayoutParams layoutParams = slContentDiscover.getLayoutParams();
-                    layoutParams.height = 250;
+                    layoutParams.height = UiUtils.dp2px(250);
                     slContentDiscover.setLayoutParams(layoutParams);
                 } else {
                     isMore = true;
                     tvMoreDiscover.setText("加载更多");
                     tvMoreDiscover.setTextColor(Color.BLACK);
-                    tvMoreDiscover.setTextSize(UiUtils.dp2px(10));
+                    tvMoreDiscover.setTextSize(12);
                     Drawable leftDrawable = mContext.getResources().getDrawable(R.drawable.ic_arrow_down);
                     leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
                     tvMoreDiscover.setCompoundDrawables(leftDrawable, null, null, null);
                     ViewGroup.LayoutParams layoutParams = slContentDiscover.getLayoutParams();
-                    layoutParams.height = 100;
+                    layoutParams.height = UiUtils.dp2px(100);
                     slContentDiscover.setLayoutParams(layoutParams);
                 }
                 break;
