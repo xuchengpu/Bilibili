@@ -1,2 +1,2 @@
-include ':app', 'demo'
+include ':app', 'demo',"teacher"
 include ':SlidingMenuLibrary'

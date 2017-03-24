@@ -2,65 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-
-
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <RelativeLayout
-        android:id="@+id/rl_entranceicons"
+        android:id="@+id/rl_partition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/iv_drawer_entranceicons"
+            android:id="@+id/iv_drawer_partition"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/live_home_clip_video" />
+            android:background="@drawable/ic_header_new" />
 
         <TextView
-            android:id="@+id/tv_entranceicons_name"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_partition_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
-            android:layout_toRightOf="@+id/iv_drawer_entranceicons"
+            android:layout_toRightOf="@+id/iv_drawer_partition"
             android:text="绘画专区"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tv_total"
-            android:layout_width="wrap_content"
+            android:padding="4dp"
+            android:background="@drawable/partition_goin_shape"
+            android:gravity="center"
+            android:id="@+id/tv_total_partition"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="26dp"
-            android:text="当前共17个直播"
+            android:text="进去看看"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
     </RelativeLayout>
 
 
 
+
     <com.xuchengpu.bilibili.view.MyGridView
-        android:id="@+id/gv_entranceicons"
+        android:id="@+id/gv_partition"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_entranceicons"
+        android:layout_below="@+id/rl_partition"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:horizontalSpacing="14dp"
+        android:horizontalSpacing="12dp"
         android:numColumns="2"
         android:padding="10dp"
-        android:verticalSpacing="18dp"></com.xuchengpu.bilibili.view.MyGridView>
+        android:verticalSpacing="12dp"></com.xuchengpu.bilibili.view.MyGridView>
 
     <RelativeLayout
+        android:id="@+id/rl_item_recycleview_partition"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/gv_entranceicons"
-        android:background="#eaeaea" >
+       android:layout_below="@+id/gv_partition"
+        android:background="#eaeaea">
         <TextView
-            android:id="@+id/tv_more_entranceicons"
+            android:id="@+id/tv_more_partition"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -75,31 +79,40 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tv_dynamic_entranceicons"
+            android:id="@+id/tv_dynamic_partition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/iv_refresh_entranceicons"
+            android:layout_toLeftOf="@+id/iv_refresh_partition"
             android:clickable="true"
             android:text="9条新动态，点击刷新"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
 
         <com.xuchengpu.bilibili.view.CircleImageView
-            android:id="@+id/iv_refresh_entranceicons"
+            android:id="@+id/iv_refresh_partition"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="16dp"
-
+            android:layout_marginRight="18dp"
             android:background="@color/colorPink"
             android:src="@drawable/ic_promo_index_refresh" />
-
     </RelativeLayout>
-
+    <com.youth.banner.Banner
+        android:layout_below="@+id/rl_item_recycleview_partition"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/banner_pritition"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        app:image_scale_type="fit_xy"
+        app:indicator_height="5dp"
+        app:indicator_width="5dp"
+        app:is_auto_play="true" />
 
 </RelativeLayout>

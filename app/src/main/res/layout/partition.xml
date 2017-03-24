@@ -2,14 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <com.xuchengpu.bilibili.view.MyGridView
-        android:id="@+id/gv_partitions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.xuchengpu.bilibili.view.MyGridView>
+    android:orientation="vertical"
+    >
 
     <android.support.v7.widget.RecyclerView
+        android:background="@color/colorGray"
         android:id="@+id/recycleview_partition"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
