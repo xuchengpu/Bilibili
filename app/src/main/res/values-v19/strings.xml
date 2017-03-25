@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Bilibili</string>
+
+    <string name="level_text">LV2</string>
+    <string name="hotbitmapgg">许成谱</string>
+    <string name="members">正式会员</string>
+
+    <!-- Navigation Items -->
+    <string name="item_home">主页</string>
+    <string name="item_group">关注的人</string>
+    <string name="item_tracker">我的钱包</string>
+    <string name="item_downloaded">离线缓存</string>
+    <string name="item_favourite">我的收藏</string>
+    <string name="item_history">历史记录</string>
+    <string name="item_settings">设置与帮助</string>
+    <string name="item_theme">主题选择</string>
+    <string name="item_app">应用推荐</string>
+    <string name="item_vip">我的大会员</string>
+
+    <!--App 介绍-->
+    <string name="about_user_head_layout">硬币: 47</string>
+    <string name="about_introduce">「哔哩哔哩」</string>
+    <string name="about_menu_action_share">分享</string>
+    <string name="about_developers">关于我</string>
+    <string name="about">关于哔哩哔哩</string>
+    <string name="about_version">V1.0</string>
+</resources>

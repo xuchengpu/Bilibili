@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
@@ -58,13 +59,8 @@ public class ComprehensiveViewpager extends BaseViewPager {
                 //拖动停止时的状态  由于position是从零开始计数 所以要加1  表明是最后一条
                 if (newState == RecyclerView.SCROLL_STATE_IDLE&&lastVisibleItem+1==adapter.getItemCount()) {
                     getMoreData();
-
-
                 }
-
-
             }
-
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -78,6 +74,7 @@ public class ComprehensiveViewpager extends BaseViewPager {
         //此处可根据服务端接口自由定义
         data.addAll(data);
         adapter.notifyDataSetChanged();
+        Toast.makeText(mContext, "加载更多数据完成", Toast.LENGTH_SHORT).show();
     }
 
 

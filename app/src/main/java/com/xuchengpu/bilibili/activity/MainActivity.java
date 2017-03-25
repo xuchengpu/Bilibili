@@ -19,7 +19,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -85,11 +84,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // 去掉窗口标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 隐藏顶部的状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -288,8 +286,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_drawer_home:
+                activityMain.openDrawer(GravityCompat.START);
                 break;
             case R.id.top_head:
+
                 break;
             case R.id.iv_new_feature_pink_dot:
                 break;
