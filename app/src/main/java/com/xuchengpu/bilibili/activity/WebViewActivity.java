@@ -93,5 +93,6 @@ public class WebViewActivity extends AppCompatActivity {
         });
 
         webview.loadUrl(url);
+        tvTitle.setText(url);
     }
 }

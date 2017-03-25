@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.viewpager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.NestedScrollView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.activity.MainActivity;
+import com.xuchengpu.bilibili.activity.TopicCenterActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.DiscoverTagBean;
 import com.xuchengpu.bilibili.utils.ConstantUtils;
@@ -67,6 +69,8 @@ public class DiscoverViewPager extends BaseViewPager {
     private TagAdapter<String> mAdapter;
     private boolean isMore = true;
     private MainActivity mainActivity;
+    private Intent intent;
+    private String[] info;
 
 
     public DiscoverViewPager(Context context) {
@@ -127,14 +131,16 @@ public class DiscoverViewPager extends BaseViewPager {
         });
 
 
+
     }
 
 
     @OnClick({R.id.tv_search_discover, R.id.iv_scan_discover, R.id.tv_more_discover, R.id.tv_interest_discover, R.id.tv_topiccenter_discover, R.id.tv_activity_discover, R.id.tv_smallhouse_discover, R.id.tv_origin_discover, R.id.tv_allarea_discover, R.id.tv_gamecenter_discover, R.id.tv_gameinfo_discover, R.id.tv_shoppingmall_discover})
     public void onClick(View view) {
+        mainActivity = (MainActivity) mContext;
         switch (view.getId()) {
             case R.id.tv_search_discover:
-                mainActivity = (MainActivity) mContext;
+
                 mainActivity.getPopupWindow();
 
                 break;
@@ -166,8 +172,16 @@ public class DiscoverViewPager extends BaseViewPager {
             case R.id.tv_interest_discover:
                 break;
             case R.id.tv_topiccenter_discover:
+                intent = new Intent(mContext, TopicCenterActivity.class);
+                info = new String[]{ConstantUtils.TOPIC_CENTER,"话题中心"};
+                intent.putExtra(ConstantUtils.CENTER, info);
+                mainActivity.startActivity(intent);
                 break;
             case R.id.tv_activity_discover:
+                intent = new Intent(mContext, TopicCenterActivity.class);
+                info = new String[]{ConstantUtils.ACTIVITY_CENTER,"活动中心"};
+                intent.putExtra(ConstantUtils.CENTER, info);
+                mainActivity.startActivity(intent);
                 break;
             case R.id.tv_smallhouse_discover:
                 break;
@@ -182,7 +196,6 @@ public class DiscoverViewPager extends BaseViewPager {
             case R.id.tv_shoppingmall_discover:
                 break;
             case R.id.iv_scan_discover:
-                mainActivity = (MainActivity) mContext;
                 mainActivity.Scan();
                 break;
         }
