@@ -34,6 +34,7 @@ import com.xuchengpu.bilibili.adapter.MainViewPagerAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.utils.CacheUtils;
 import com.xuchengpu.bilibili.utils.ConstantUtils;
+import com.xuchengpu.bilibili.utils.UiUtils;
 import com.xuchengpu.bilibili.view.CircleImageView;
 import com.xuchengpu.bilibili.viewpager.ChaseViewPager;
 import com.xuchengpu.bilibili.viewpager.DirectSeedingViewPager;
@@ -86,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        //解决底部虚拟键问题
+        UiUtils.transportStatus(this);
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);

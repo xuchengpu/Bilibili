@@ -1,9 +1,16 @@
 package com.xuchengpu.bilibili.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.xuchengpu.bilibili.view.MyApplication;
+
+import java.lang.reflect.Method;
 
 
 /**
@@ -49,6 +56,38 @@ public class UiUtils {
             MyApplication.getHandler().post(runnable);
         }
 
+    }
+
+    public static boolean isHaveNavigationBar(Context context) {
+
+        boolean isHave = false;
+        boolean   hasNavigationBar;
+        Resources rs = context.getResources();
+        int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
+        if (id > 0) {
+            hasNavigationBar = rs.getBoolean(id);
+        }
+        try {
+            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+            Method m = systemPropertiesClass.getMethod("get", String.class);
+            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+            if ("1".equals(navBarOverride)) {
+                isHave = false;
+            } else if ("0".equals(navBarOverride)) {
+                isHave = true;
+            }
+        } catch (Exception e) {
+            Log.w("TAG", e);
+        }
+        return isHave;
+    }
+//    返回为true的话就不给他设置，反之设置，具体代码如下：
+    public static void transportStatus(Activity context){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            if (isHaveNavigationBar(context))
+                context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 
 
