@@ -16,6 +16,15 @@ public class ConstantUtils {
 
 
     //地址值
+    //登录地址值
+    public static final String HOST ="47.93.118.241";//提供ip地址
+    public static final String BASE_URL ="http://" +HOST +":8081/P2PInvest/";
+    public static final String LOGIN =BASE_URL +"login";//访问登录的url
+    //注册
+    public static final String REGISTER =BASE_URL +"UserRegister";//注册
+
+
+
     //直播界面内容地址
     public static final String DIRECTSEEDING_CONTENT= "http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=xxhdpi&ts=1490021691000&sign=f283ef788f4b302d0d1783e3f3e98aa4";
     //推荐综合地址
@@ -33,4 +42,5 @@ public class ConstantUtils {
     public static final String TOPIC_CENTER="http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";
     //活动中心
     public static final String ACTIVITY_CENTER="http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015812000&sign=0d9d37f01da5a7d425c10cee0cf3a5f4";
+
 }

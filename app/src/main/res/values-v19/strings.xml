@@ -5,6 +5,10 @@
     <string name="hotbitmapgg">许成谱</string>
     <string name="members">正式会员</string>
 
+    <string name="login_hint_account">请输入您的手机号</string>
+    <string name="login_hint_password">请输入您的密码</string>
+    <string name="login">登录</string>
+
     <!-- Navigation Items -->
     <string name="item_home">主页</string>
     <string name="item_group">关注的人</string>
