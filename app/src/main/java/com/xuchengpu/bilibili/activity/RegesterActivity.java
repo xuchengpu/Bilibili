@@ -39,6 +39,9 @@ public class RegesterActivity extends AppCompatActivity {
     EditText etRegisterPwdagain;
     @BindView(R.id.btn_register)
     Button btnRegister;
+    private String number;
+    private String name;
+    private String pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +61,9 @@ public class RegesterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String number = etRegisterNumber.getText().toString().trim();
-                String name = etRegisterName.getText().toString().trim();
-                String pwd = etRegisterPwd.getText().toString().trim();
+                number = etRegisterNumber.getText().toString().trim();
+                name = etRegisterName.getText().toString().trim();
+                pwd = etRegisterPwd.getText().toString().trim();
                 String pwdAgain = etRegisterPwdagain.getText().toString().trim();
                 if (TextUtils.isEmpty(number) || TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd) || TextUtils.isEmpty(pwdAgain)) {
                     Toast.makeText(RegesterActivity.this, "各项不能有一个为空", Toast.LENGTH_SHORT).show();
@@ -71,9 +74,9 @@ public class RegesterActivity extends AppCompatActivity {
                 }
                 //保存到map映射中
                 Map<String, String> map = new HashMap<String, String>();
-                map.put("name",name);
-                map.put("password",pwd);
-                map.put("phone",number);
+                map.put("name", name);
+                map.put("password", pwd);
+                map.put("phone", number);
 
 
                 RequestMethod.getDataFromNet(ConstantUtils.REGISTER, map, new TransferData() {
@@ -83,6 +86,7 @@ public class RegesterActivity extends AppCompatActivity {
                         boolean success = parseObject.getBoolean("isExist");
                         if (success) {
                             Toast.makeText(RegesterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+
                             finish();
                         } else {
                             Toast.makeText(RegesterActivity.this, "该用户已经注册过", Toast.LENGTH_SHORT).show();

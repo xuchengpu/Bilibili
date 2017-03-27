@@ -103,6 +103,14 @@
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/tv_exit"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退出登录"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_small_text_size" />
 
             </LinearLayout>
 

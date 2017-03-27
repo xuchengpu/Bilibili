@@ -2,6 +2,7 @@ package com.xuchengpu.bilibili.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -123,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //模式
         tablayout.setTabMode(TabLayout.MODE_FIXED);
 
-
     }
 
     private void initViewPager() {
@@ -143,7 +143,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.id.user_avatar_view);
         TextView mUserName = (TextView) headerView.findViewById(R.id.user_name);
         TextView mUserSign = (TextView) headerView.findViewById(R.id.user_other_info);
+        TextView exit = (TextView) headerView.findViewById(R.id.tv_exit);
         ImageView mSwitchMode = (ImageView) headerView.findViewById(R.id.iv_head_switch_mode);
+
         //设置头像
         mUserAvatarView.setImageResource(R.drawable.ic_hotbitmapgg_avatar);
         //设置用户名 签名
@@ -164,6 +166,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             mSwitchMode.setImageResource(R.drawable.ic_switch_night);
         }
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearSp();
+                Toast.makeText(MainActivity.this, "登录数据已清除", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -293,6 +302,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.top_head:
 
                 break;
+
             case R.id.iv_new_feature_pink_dot:
                 break;
             case R.id.iv_menu_top_game_center:
@@ -400,5 +410,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //如果输入法在窗口上已经显示，则隐藏，反之则显示
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    //清除所有的sp操作
+    public void clearSp(){
+        SharedPreferences user = getSharedPreferences("userinfo", MODE_PRIVATE);
+        user.edit().clear().commit(); //清除的是内容
     }
 }
