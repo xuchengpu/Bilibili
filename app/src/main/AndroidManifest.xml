@@ -46,7 +46,8 @@
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.TopicCenterActivity" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.RegesterActivity"></activity>
+        <activity android:name=".activity.RegesterActivity" />
+        <activity android:name=".activity.VideoDetailsActivity"></activity>
     </application>
 
 </manifest>

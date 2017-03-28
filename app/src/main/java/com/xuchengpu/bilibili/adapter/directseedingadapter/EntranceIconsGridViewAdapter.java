@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.xuchengpu.bilibili.R;
@@ -47,7 +48,7 @@ public class EntranceIconsGridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
          ViewHolder holder=null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.item_gridview_entranceicons, null);
@@ -60,6 +61,12 @@ public class EntranceIconsGridViewAdapter extends BaseAdapter {
         holder.tvDescItemGridviewEntranceicons.setText(datas.get(position).getTitle());
         holder.tvNameItemGridviewEntranceicons.setText(datas.get(position).getOwner().getName());
 //        holder.tvEyeItemGridviewEntranceicons.setText(datas.get(position).getOnline());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, ""+datas.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
         return convertView;
     }
 

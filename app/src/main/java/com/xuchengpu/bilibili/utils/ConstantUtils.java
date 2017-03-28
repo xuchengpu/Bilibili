@@ -11,6 +11,8 @@ public class ConstantUtils {
     public static final String SCAN="scan";
     //发现中的中心名称
     public static final String CENTER="center";
+    //推荐视频
+    public static final String RECOMMAND_VIDEO="recommand_video";
 
 
 

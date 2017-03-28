@@ -178,6 +178,12 @@ public class DirectSeedingAdapter extends RecyclerView.Adapter {
             });
             EntranceIconsGridViewAdapter adapter=new EntranceIconsGridViewAdapter(mContext,partitionsBean.getLives());
             gv.setAdapter(adapter);
+            /*gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(mContext, ""+position, Toast.LENGTH_SHORT).show();
+                }
+            });*/
 
         }
     }

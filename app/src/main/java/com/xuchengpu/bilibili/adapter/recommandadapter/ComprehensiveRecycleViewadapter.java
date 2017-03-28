@@ -1,6 +1,7 @@
 package com.xuchengpu.bilibili.adapter.recommandadapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.VideoDetailsActivity;
 import com.xuchengpu.bilibili.bean.RecommandComprehensiveBean;
+import com.xuchengpu.bilibili.utils.ConstantUtils;
 
 import java.util.List;
 
@@ -77,13 +80,21 @@ public class ComprehensiveRecycleViewadapter extends RecyclerView.Adapter {
             ButterKnife.bind(this,itemView);
         }
 
-        public void setData(RecommandComprehensiveBean.DataBean dataBean) {
+        public void setData(final RecommandComprehensiveBean.DataBean dataBean) {
             Glide.with(mContext).load(dataBean.getCover()).into(ivRecommend);
             tvPlayNumber.setText(""+dataBean.getPlay());
             tvDanmuNumber.setText(""+dataBean.getDanmaku());
             tvVedioDuration.setText(""+dataBean.getDuration());
             tvTypeName.setText(dataBean.getTname());
             tvRecomName.setText(dataBean.getName());
+            itemLiveLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, VideoDetailsActivity.class);
+                    intent.putExtra(ConstantUtils.RECOMMAND_VIDEO,dataBean);
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
     }

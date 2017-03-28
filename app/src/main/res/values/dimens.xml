@@ -57,4 +57,10 @@
     <dimen name="navigation_avatar_size">74dp</dimen>
     <dimen name="navigation_subtitle_secondary_text_size">14sp</dimen>
 
+    <!-- Common resources -->
+    <dimen name="appbar_parallax_max_height">226dp</dimen>
+    <dimen name="floating_action_button_margin">16dp</dimen>
+    <dimen name="floating_action_button_size_half">32dp</dimen>
+    <dimen name="shadow_gradient_height">90dp</dimen>
+
 </resources>

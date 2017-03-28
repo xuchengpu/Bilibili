@@ -1,5 +1,6 @@
 package com.xuchengpu.bilibili.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class RecommandComprehensiveBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * title : 王者荣耀里应该不会有比她还美的了吧
          * cover : http://i0.hdslb.com/bfs/archive/b082045863e94b4091690bb1d5c11b0a4fd9930f.jpg
@@ -309,7 +310,7 @@ public class RecommandComprehensiveBean {
             this.item = item;
         }
 
-        public static class TagBean {
+        public static class TagBean implements Serializable{
             /**
              * tag_id : 3007
              * tag_name : 手机游戏
@@ -335,7 +336,7 @@ public class RecommandComprehensiveBean {
             }
         }
 
-        public static class DislikeReasonsBean {
+        public static class DislikeReasonsBean implements Serializable{
             /**
              * reason_id : 4
              * reason_name : UP主:最后的神灵o
@@ -361,7 +362,7 @@ public class RecommandComprehensiveBean {
             }
         }
 
-        public static class ItemBean {
+        public static class ItemBean implements Serializable {
             /**
              * title : 真人电影与动画的对比 你绝对没见过这样的saber！
              * cover : http://i0.hdslb.com/bfs/archive/7c6c605d69914540c0f2ea1c48645113451228d9.jpg
