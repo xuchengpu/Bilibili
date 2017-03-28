@@ -310,7 +310,7 @@ public class VideoDetailsActivity extends AppCompatActivity {
 
     private void initViewPagers() {
         viewPagers = new ArrayList<>();
-        viewPagers.add(new VideoIntroduce(this));
+        viewPagers.add(new VideoIntroduce(this,data));
         viewPagers.add(new VideoComments(this));
     }
 
