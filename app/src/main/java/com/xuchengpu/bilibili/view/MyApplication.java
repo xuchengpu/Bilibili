@@ -8,6 +8,9 @@ import android.util.Log;
 
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 许成谱 on 2017/3/12 11:09.
  * qq:1550540124
@@ -22,6 +25,7 @@ public class MyApplication extends Application {
     private static Thread mainThread;
     private static int  threadid;
     private static Handler handler;
+    private static List<String> downloadData;
 
     public static Context getContext() {
         return context;
@@ -38,6 +42,9 @@ public class MyApplication extends Application {
     public static Handler getHandler() {
         return handler;
     }
+    public static List<String> getDownloadData(){
+        return downloadData;
+    }
 
     @Override
     public void onCreate() {
@@ -46,6 +53,7 @@ public class MyApplication extends Application {
         context=this;
         //得到当前线程
         threadid = android.os.Process.myPid();
+        downloadData=new ArrayList<>();
         handler = new Handler();
         //二维码扫描功能
         ZXingLibrary.initDisplayOpinion(this);
