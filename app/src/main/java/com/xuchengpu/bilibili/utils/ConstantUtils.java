@@ -44,5 +44,7 @@ public class ConstantUtils {
     public static final String TOPIC_CENTER="http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";
     //活动中心
     public static final String ACTIVITY_CENTER="http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015812000&sign=0d9d37f01da5a7d425c10cee0cf3a5f4";
+    //视频页面播放地址
+    public static final String VIDEOURL="http://dl.live-play.acgvideo.com/live-dl/830301/live_14452610_9536627.flv?wsSecret=2d62d29710f9fe7fe7ed5c08221e18cf&wsTime=1490671958";
 
 }

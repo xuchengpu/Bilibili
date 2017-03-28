@@ -40,5 +40,6 @@ dependencies {
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.3'
     compile 'com.wenwenwen888:searchbox:1.0.0'
+    compile 'com.linsea:opendanmaku:1.0.0@aar'
 
 }
