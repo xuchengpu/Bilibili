@@ -59,5 +59,12 @@
 
         <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
     </style>
+    <style name="cartpopwindow_anim_style">
+
+        <item name="android:windowEnterAnimation">@anim/cartpopshow_anim</item>
+        <!-- 指定显示的动画xml -->
+
+        <item name="android:windowExitAnimation">@anim/cartpophidden_anim</item>
+    </style>
 
 </resources>

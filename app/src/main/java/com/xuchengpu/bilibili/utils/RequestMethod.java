@@ -112,6 +112,7 @@ public class RequestMethod {
                     conn.setConnectTimeout(5000);
                     conn.setReadTimeout(5000);
                     conn.connect();
+
                     if (conn.getResponseCode() == 200) {
                         double length = conn.getContentLength();
 //                        progressDialog.setMax(100);

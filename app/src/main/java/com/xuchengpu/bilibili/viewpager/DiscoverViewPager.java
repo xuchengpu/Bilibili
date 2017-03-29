@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.GoodsListActivity;
 import com.xuchengpu.bilibili.activity.MainActivity;
 import com.xuchengpu.bilibili.activity.TopicCenterActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
@@ -194,6 +195,8 @@ public class DiscoverViewPager extends BaseViewPager {
             case R.id.tv_gameinfo_discover:
                 break;
             case R.id.tv_shoppingmall_discover:
+                intent = new Intent(mContext, GoodsListActivity.class);
+                mainActivity.startActivity(intent);
                 break;
             case R.id.iv_scan_discover:
                 mainActivity.Scan();

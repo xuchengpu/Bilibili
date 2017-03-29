@@ -30,10 +30,10 @@ public class WebViewActivity extends AppCompatActivity {
     ImageButton ibMore;
     @BindView(R.id.webview)
     WebView webview;
-    @BindView(R.id.progressbar)
-    ProgressBar progressbar;
     @BindView(R.id.activity_web_view)
     LinearLayout activityWebView;
+    @BindView(R.id.progressbar_webView)
+    ProgressBar progressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        String url=getIntent().getStringExtra(ConstantUtils.SCAN);
+        String url = getIntent().getStringExtra(ConstantUtils.SCAN);
         WebSettings webSettings = webview.getSettings();
         //设置JS调用Java
         webSettings.setJavaScriptEnabled(true);

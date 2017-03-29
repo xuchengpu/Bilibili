@@ -1,2 +1,2 @@
-include ':app', 'demo', "teacher", 'MaterialDesign'
+include ':app', 'demo', "teacher", 'MaterialDesign', ':retrofitdownload'
 include ':SlidingMenuLibrary'
