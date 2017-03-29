@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -18,6 +19,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
+    }
+}
+greendao {
+    schemaVersion 1
+    daoPackage 'com.anye.greendao.gen'
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -39,7 +53,8 @@ dependencies {
     compile 'com.zhy:flowlayout-lib:1.0.3'
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.3'
-    compile 'com.wenwenwen888:searchbox:1.0.0'
     compile 'com.linsea:opendanmaku:1.0.0@aar'
+    compile'org.greenrobot:greendao:3.0.1'
+    compile'org.greenrobot:greendao-generator:3.0.0'
 
 }

@@ -18,12 +18,17 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anye.greendao.gen.UserDao;
 import com.bumptech.glide.Glide;
 import com.xuchengpu.bilibili.R;
 import com.xuchengpu.bilibili.bean.GoodsBean;
+import com.xuchengpu.bilibili.bean.User;
 import com.xuchengpu.bilibili.utils.ConstantUtils;
 import com.xuchengpu.bilibili.utils.VirtualkeyboardHeight;
 import com.xuchengpu.bilibili.view.AddSubView;
+import com.xuchengpu.bilibili.view.MyApplication;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,6 +74,8 @@ public class GoodsInfoActivity extends AppCompatActivity {
     @BindView(R.id.ll_root)
     LinearLayout llRoot;
     private GoodsBean goodsBean;
+    private UserDao mUserDao;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,7 +236,35 @@ public class GoodsInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //存储到数据库
+                //User(Long id, String cover_price, String figure, String name,int number, boolean isChecked)
 //                CartStorage.getInstance(GoodsInfoActivity.this).addData(goodsBean);
+                mUserDao = MyApplication.getInstances().getDaoSession().getUserDao();
+                List<User> users = mUserDao.loadAll();
+                if(users.size()==0) {
+                    //没有添加过
+                    mUser = new User(Long.parseLong(goodsBean.getProduct_id()),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),goodsBean.getNumber(),goodsBean.isChecked());
+                    mUserDao.insert(mUser);
+                }
+                boolean flag=true;
+                for (int i = 0; i < users.size(); i++) {
+                   if((users.get(i).getId()+"").equals(goodsBean.getProduct_id())) {
+                       //添加过
+                       int num=users.get(i).getNumber()+goodsBean.getNumber();
+                       mUser = new User(users.get(i).getId(),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),num,goodsBean.isChecked());
+                       mUserDao.update(mUser);
+                       flag=false;
+                   }else{
+                       //没有添加过
+                       if(flag) {
+                           mUser = new User(Long.parseLong(goodsBean.getProduct_id()),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),goodsBean.getNumber(),goodsBean.isChecked());
+                           mUserDao.insert(mUser);
+                           flag=false;
+                       }
+
+                   }
+
+                }
+
                 window.dismiss();
             }
         });
