@@ -14,6 +14,8 @@ import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by 许成谱 on 2017/3/12 11:09.
  * qq:1550540124
@@ -71,6 +73,10 @@ public class MyApplication extends Application {
 
         instances = this;
         setDatabase();
+
+        //极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
     public static MyApplication getInstances(){
         return instances;
