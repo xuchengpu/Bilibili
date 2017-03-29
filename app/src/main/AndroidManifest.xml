@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:name=".view.MyApplication"
         android:allowBackup="true"
@@ -56,6 +58,16 @@
         <activity android:name=".activity.GoodsInfoActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name=".activity.QRCodeActivity"></activity>
+
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- alipay sdk end -->
     </application>
 
 </manifest>

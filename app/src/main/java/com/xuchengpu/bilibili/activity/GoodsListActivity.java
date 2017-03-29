@@ -130,6 +130,7 @@ public class GoodsListActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ib_goods_list_back:
+                finish();
                 break;
             case R.id.tv_goods_list_search:
                 break;

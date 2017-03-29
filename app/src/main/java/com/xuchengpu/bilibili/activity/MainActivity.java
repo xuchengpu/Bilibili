@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String[] titles = {"直播", "推荐", "追番", "分区", "发现"};
     public static final int REQUEST_CODE = 1;
     private PopupWindow window;
-    private  int count=1;
+    private int count = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -182,15 +182,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     private void switchNightMode() {
 
-        boolean isNight = CacheUtils.getBoolean(this,ConstantUtils.SWITCH_MODE_KEY);
+        boolean isNight = CacheUtils.getBoolean(this, ConstantUtils.SWITCH_MODE_KEY);
         if (isNight) {
             // 日间模式
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            CacheUtils.putBoolean(this,ConstantUtils.SWITCH_MODE_KEY, false);
+            CacheUtils.putBoolean(this, ConstantUtils.SWITCH_MODE_KEY, false);
         } else {
             // 夜间模式
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            CacheUtils.putBoolean(this,ConstantUtils.SWITCH_MODE_KEY, true);
+            CacheUtils.putBoolean(this, ConstantUtils.SWITCH_MODE_KEY, true);
         }
 
         recreate();
@@ -210,8 +210,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
 
-                    Intent intent=new Intent(this,WebViewActivity.class);
-                    intent.putExtra(ConstantUtils.SCAN,result);
+                    Intent intent = new Intent(this, WebViewActivity.class);
+                    intent.putExtra(ConstantUtils.SCAN, result);
                     startActivity(intent);
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (window != null && window.isShowing()) {
             window.dismiss();
             window = null;
-            WindowManager.LayoutParams params =getWindow().getAttributes();
+            WindowManager.LayoutParams params = getWindow().getAttributes();
             params.alpha = 1f;
             getWindow().setAttributes(params);
         }
@@ -308,6 +308,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.iv_menu_top_game_center:
                 break;
             case R.id.iv_toolbar_menu_download:
+                Intent intent = new Intent(this, DownLoadActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_download_search:
                 getPopupWindow();
@@ -327,6 +329,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.item_download:
                 // 离线缓存
 //                startActivity(new Intent(MainActivity.this, OffLineDownloadActivity.class));
+                Intent intent = new Intent(this, DownLoadActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.item_vip:
@@ -377,8 +381,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK) {
-            if(count%2==0) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (count % 2 == 0) {
                 finish();
             }
             Toast.makeText(MainActivity.this, "再次点击退出", Toast.LENGTH_SHORT).show();
@@ -386,9 +390,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    count=1;
+                    count = 1;
                 }
-            },2000);
+            }, 2000);
 //            CountDownTimer timer = new CountDownTimer(10000, 1000) {
 //              第一个参数是总时间 第二个参数间隔时间
 //                @Override
@@ -406,14 +410,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return super.onKeyDown(keyCode, event);
     }
-    public void initKeyboard(){
+
+    public void initKeyboard() {
         //如果输入法在窗口上已经显示，则隐藏，反之则显示
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     //清除所有的sp操作
-    public void clearSp(){
+    public void clearSp() {
         SharedPreferences user = getSharedPreferences("userinfo", MODE_PRIVATE);
         user.edit().clear().commit(); //清除的是内容
     }

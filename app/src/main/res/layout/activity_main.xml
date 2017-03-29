@@ -5,6 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.xuchengpu.bilibili.activity.MainActivity">
 
 
@@ -13,7 +14,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
 
         <android.support.design.widget.AppBarLayout
@@ -21,7 +23,7 @@
             android:layout_height="wrap_content"
             android:background="#fb7299"
             android:fitsSystemWindows="true"
-            android:padding="10dp">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,6 +68,5 @@
         android:fitsSystemWindows="true"
         android:overScrollMode="never"
         app:headerLayout="@layout/header_layout"
-
         app:menu="@menu/main"></android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

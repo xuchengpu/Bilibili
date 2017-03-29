@@ -54,7 +54,7 @@ dependencies {
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.3'
     compile 'com.linsea:opendanmaku:1.0.0@aar'
-    compile'org.greenrobot:greendao:3.0.1'
-    compile'org.greenrobot:greendao-generator:3.0.0'
-
+    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+    compile files('libs/alipaySdk-20160809.jar')
 }
