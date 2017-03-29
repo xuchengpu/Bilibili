@@ -45,11 +45,11 @@
                     android:textSize="13sp" />
 
                 <ImageButton
-                    android:id="@+id/ib_goods_list_home"
+                    android:id="@+id/ib_goods_list_cart"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/top_bar_right_home_btn" />
+                    android:background="@drawable/icon_good_detail_cart" />
             </LinearLayout>
 
             <View

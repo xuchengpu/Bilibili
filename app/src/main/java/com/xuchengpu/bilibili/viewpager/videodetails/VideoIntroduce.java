@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.CartActivity;
 import com.xuchengpu.bilibili.activity.DownLoadActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
 import com.xuchengpu.bilibili.bean.RecommandComprehensiveBean;
@@ -56,6 +57,7 @@ public class VideoIntroduce extends BaseViewPager {
     ImageButton ivPush;
     @BindView(R.id.iv_tocart)
     ImageButton ivTocart;
+    private Intent intent;
 
     public VideoIntroduce(Context context, RecommandComprehensiveBean.DataBean data) {
         super(context);
@@ -94,12 +96,15 @@ public class VideoIntroduce extends BaseViewPager {
                 share();
                 break;
             case R.id.iv_download:
-                Intent intent = new Intent(mContext, DownLoadActivity.class);
+                 intent = new Intent(mContext, DownLoadActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.iv_push:
                 break;
             case R.id.iv_tocart:
+                Intent intent = new Intent(mContext, CartActivity.class);
+                mContext.startActivity(intent);
+
                 break;
         }
     }

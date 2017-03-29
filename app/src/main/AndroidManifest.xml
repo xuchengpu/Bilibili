@@ -42,16 +42,19 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.TopicCenterActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegesterActivity" />
-        <activity android:name=".activity.VideoDetailsActivity" />
+        <activity android:name=".activity.VideoDetailsActivity"
+            android:launchMode="singleTask"/>
         <activity android:name=".activity.DownLoadActivity" />
         <activity android:name=".activity.GoodsListActivity" />
         <activity android:name=".activity.CartActivity"></activity>
-        <activity android:name=".activity.GoodsInfoActivity"></activity>
+        <activity android:name=".activity.GoodsInfoActivity"
+            android:launchMode="singleTask"></activity>
         <activity android:name=".activity.QRCodeActivity"></activity>
     </application>
 

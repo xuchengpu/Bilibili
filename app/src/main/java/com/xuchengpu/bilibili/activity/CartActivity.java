@@ -1,5 +1,6 @@
 package com.xuchengpu.bilibili.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -229,7 +230,9 @@ public class CartActivity extends AppCompatActivity {
 
                 /*Intent intent=new Intent(Constants.GOTOHOME);
                 manager.sendBroadcast(intent);*/
-
+                Intent intent = new Intent(this, GoodsListActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.ll_empty_shopcart:
                 break;

@@ -105,7 +105,7 @@ public class GoodsInfoActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.ib_good_info_back, R.id.ib_good_info_more, R.id.iv_good_info_image, R.id.tv_good_info_name, R.id.tv_good_info_desc, R.id.tv_good_info_price, R.id.tv_good_info_store, R.id.tv_good_info_style,  R.id.tv_good_info_callcenter, R.id.tv_good_info_collection, R.id.tv_good_info_cart, R.id.btn_good_info_addcart, R.id.ll_goods_root, R.id.tv_more_share, R.id.tv_more_search, R.id.tv_more_home, R.id.btn_more, R.id.ll_root})
+    @OnClick({R.id.ib_good_info_back, R.id.ib_good_info_more, R.id.iv_good_info_image, R.id.tv_good_info_name, R.id.tv_good_info_desc, R.id.tv_good_info_price, R.id.tv_good_info_store, R.id.tv_good_info_style, R.id.tv_good_info_callcenter, R.id.tv_good_info_collection, R.id.tv_good_info_cart, R.id.btn_good_info_addcart, R.id.ll_goods_root, R.id.tv_more_share, R.id.tv_more_search, R.id.tv_more_home, R.id.btn_more, R.id.ll_root})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ib_good_info_back:
@@ -240,32 +240,26 @@ public class GoodsInfoActivity extends AppCompatActivity {
 //                CartStorage.getInstance(GoodsInfoActivity.this).addData(goodsBean);
                 mUserDao = MyApplication.getInstances().getDaoSession().getUserDao();
                 List<User> users = mUserDao.loadAll();
-                if(users.size()==0) {
-                    //没有添加过
-                    mUser = new User(Long.parseLong(goodsBean.getProduct_id()),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),goodsBean.getNumber(),goodsBean.isChecked());
-                    mUserDao.insert(mUser);
-                }
-                boolean flag=true;
+                boolean isAdded = false;
                 for (int i = 0; i < users.size(); i++) {
-                   if((users.get(i).getId()+"").equals(goodsBean.getProduct_id())) {
-                       //添加过
-                       int num=users.get(i).getNumber()+goodsBean.getNumber();
-                       mUser = new User(users.get(i).getId(),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),num,goodsBean.isChecked());
-                       mUserDao.update(mUser);
-                       flag=false;
-                   }else{
-                       //没有添加过
-                       if(flag) {
-                           mUser = new User(Long.parseLong(goodsBean.getProduct_id()),goodsBean.getCover_price(),goodsBean.getFigure(),goodsBean.getName(),goodsBean.getNumber(),goodsBean.isChecked());
-                           mUserDao.insert(mUser);
-                           flag=false;
-                       }
-
-                   }
-
+                    Long id = users.get(i).getId();
+                    String product_id = goodsBean.getProduct_id();
+                    if ((id + "").equals(product_id)) {
+                        isAdded = true;
+                        int num = users.get(i).getNumber() + goodsBean.getNumber();
+                        mUser = new User(users.get(i).getId(), goodsBean.getCover_price(), goodsBean.getFigure(), goodsBean.getName(), num, goodsBean.isChecked());
+                        //添加过
+                        mUserDao.update(mUser);
+                    }
+                }
+                if (!isAdded) {
+                    //没有添加过
+                    mUser = new User(Long.parseLong(goodsBean.getProduct_id()), goodsBean.getCover_price(), goodsBean.getFigure(), goodsBean.getName(), goodsBean.getNumber(), goodsBean.isChecked());
+                    mUserDao.insert(mUser);
                 }
 
                 window.dismiss();
+                GoodsInfoActivity.this.finish();
             }
         });
         //消失后恢复

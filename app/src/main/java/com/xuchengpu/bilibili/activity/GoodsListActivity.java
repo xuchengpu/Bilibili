@@ -35,8 +35,8 @@ public class GoodsListActivity extends AppCompatActivity {
     ImageButton ibGoodsListBack;
     @BindView(R.id.tv_goods_list_search)
     TextView tvGoodsListSearch;
-    @BindView(R.id.ib_goods_list_home)
-    ImageButton ibGoodsListHome;
+    @BindView(R.id.ib_goods_list_cart)
+    ImageButton ibGoodsListCart;
     @BindView(R.id.tv_goods_list_sort)
     TextView tvGoodsListSort;
     @BindView(R.id.tv_goods_list_price)
@@ -76,7 +76,7 @@ public class GoodsListActivity extends AppCompatActivity {
         RequestMethod.getDataFromNet(goodlist, new TransferData() {
             @Override
             public void onsucess(String data) {
-                if(data!=null) {
+                if (data != null) {
                     processData(data);
                 }
             }
@@ -90,9 +90,9 @@ public class GoodsListActivity extends AppCompatActivity {
     }
 
     private void processData(String json) {
-        GoodListBean bean= JSON.parseObject(json,GoodListBean.class);
+        GoodListBean bean = JSON.parseObject(json, GoodListBean.class);
         List<GoodListBean.ResultBean.RecordsBean> datas = bean.getResult().getRecords();
-        if(datas!=null&&datas.size()>0) {
+        if (datas != null && datas.size() > 0) {
             datas.addAll(datas);
             datas.addAll(datas);
             datas.addAll(datas);
@@ -113,9 +113,9 @@ public class GoodsListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(GoodListBean.ResultBean.RecordsBean data) {
                 GoodsBean goodsBean = new GoodsBean();
-                goodsBean.setProduct_id(data.getSkuId()+"");
+                goodsBean.setProduct_id(data.getSkuId() + "");
                 goodsBean.setName(data.getTitle());
-                goodsBean.setCover_price(data.getVipPlusPrice()+"");
+                goodsBean.setCover_price(data.getVipPlusPrice() + "");
                 goodsBean.setFigure(data.getImgUrl());
 
                 Intent intent = new Intent(GoodsListActivity.this, GoodsInfoActivity.class);
@@ -126,7 +126,7 @@ public class GoodsListActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.ib_goods_list_back, R.id.tv_goods_list_search, R.id.tv_goods_list_sort, R.id.tv_goods_list_price})
+    @OnClick({R.id.ib_goods_list_back,R.id.ib_goods_list_cart, R.id.tv_goods_list_search, R.id.tv_goods_list_sort, R.id.tv_goods_list_price})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ib_goods_list_back:
@@ -136,6 +136,10 @@ public class GoodsListActivity extends AppCompatActivity {
             case R.id.tv_goods_list_sort:
                 break;
             case R.id.tv_goods_list_price:
+                break;
+            case R.id.ib_goods_list_cart:
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
                 break;
         }
     }
