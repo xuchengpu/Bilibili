@@ -6,42 +6,78 @@
     >
 
     <EditText
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:id="@+id/tv_search_discover"
+        android:id="@+id/et_search_discover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="12dp"
         android:background="#fff"
-        android:drawableRight="@drawable/ic_hint_search"
+        android:clickable="true"
         android:drawablePadding="10dp"
+        android:gravity="center_vertical"
         android:hint="搜索视频、番剧、up主或av号"
         android:paddingBottom="5dp"
-        android:paddingLeft="80dp"
+        android:paddingLeft="50dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:textColor="#000"
-        android:textSize="14sp"  />
+        android:textSize="14sp" />
+
     <ImageView
-        android:id="@+id/iv_scan_discover"
-        android:layout_alignLeft="@+id/tv_search_discover"
-        android:layout_alignBottom="@+id/tv_search_discover"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_scan"/>
+        android:id="@+id/iv_search"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/et_search_discover"
+        android:layout_alignRight="@+id/et_search_discover"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_hint_search" />
+
     <ImageView
-        android:id="@+id/iv_back_discover"
-        android:layout_alignLeft="@+id/tv_search_discover"
-        android:layout_alignBottom="@+id/tv_search_discover"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/iv_voice_search"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:background="@drawable/ic_arrow_back_black"/>
+        android:layout_alignBottom="@+id/et_search_discover"
+        android:layout_alignLeft="@+id/et_search_discover"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/voice_empty" />
+
+    <LinearLayout
+        android:id="@+id/ll_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_search_discover"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#eaeaea"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="历史记录"
+            android:textSize="14sp" />
+
+
+        <ListView
+            android:id="@+id/lv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:divider="@null" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#44000000" />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

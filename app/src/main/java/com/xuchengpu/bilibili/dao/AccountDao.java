@@ -20,11 +20,14 @@ import com.xuchengpu.bilibili.utils.UiUtils;
 
 public class AccountDao {
     private static AccountDao dao=new AccountDao(UiUtils.getContext());
-    private final AccountDataBase accountDataBase;
+    private  final AccountDataBase accountDataBase;
     private LoginInfo loginInfo;
 
     private AccountDao(Context context){
         accountDataBase = new AccountDataBase(context);
+    }
+    public  AccountDataBase getAccountDataBase(){
+        return accountDataBase;
     }
     public static AccountDao getDao(){
         return  dao;

@@ -5,16 +5,18 @@ package com.xuchengpu.bilibili.utils;
  */
 
 public class ConstantUtils {
-    //设置夜间模式用的key常量
+    //设置夜间模式用的key常量flag
     public static final String SWITCH_MODE_KEY = "mode_key";
-    //扫描二维码及发现页面传递给webview用的key值
+    //扫描二维码及发现页面传递给webview用的key值 flag
     public static final String SCAN="scan";
-    //发现中的中心名称
+    //发现中的中心名称flag
     public static final String CENTER="center";
-    //推荐视频
+    //推荐视频flag
     public static final String RECOMMAND_VIDEO="recommand_video";
     //商品跳转标志flag
     public static final String GOODSBEAN = "goodsbean";
+    //搜索跳转flag
+    public static final String SEARCH = "search";
 
 
 
@@ -48,9 +50,13 @@ public class ConstantUtils {
     public static final String ACTIVITY_CENTER="http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015812000&sign=0d9d37f01da5a7d425c10cee0cf3a5f4";
     //视频页面播放地址
     public static final String VIDEOURL="http://dl.live-play.acgvideo.com/live-dl/632161/live_6188477_1561069.flv?wsSecret=ff7ac23ee5643dca9277a5a2dd7ba429&wsTime=1490687221";
-
+    //商品列表
     public static final String GOODLIST="http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
+    //搜素的头
+    public static String SEACHER_TOP_URL = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=";
 
+    //搜索的尾
+    public static String SEACHER_BUTTON_URL = "&mobi_app=android&platform=android&pn=1&ps=20";
 
 
 

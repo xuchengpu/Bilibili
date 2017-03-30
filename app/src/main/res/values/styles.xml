@@ -37,6 +37,19 @@
         <item name="android:textColor">#fdc5d5</item>
         <item name="textAllCaps">false</item>
     </style>
+    <style name="SearchTabLayout" parent="TextAppearance.Design.Tab">
+        <item name="tabIndicatorColor">#fff</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabTextAppearance">@style/SearchTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/colorPink</item>
+
+    </style>
+
+    <style name="SearchTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="textAllCaps">false</item>
+    </style>
     <style name="RecommandTabLayout" parent="TextAppearance.Design.Tab">
         <item name="tabMaxWidth">60dp</item>
         <item name="tabMinWidth">60dp</item>

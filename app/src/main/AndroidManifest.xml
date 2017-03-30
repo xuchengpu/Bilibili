@@ -24,8 +24,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <application
         android:name=".view.MyApplication"
         android:allowBackup="true"
@@ -44,20 +42,22 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTask"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.TopicCenterActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegesterActivity" />
-        <activity android:name=".activity.VideoDetailsActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".activity.VideoDetailsActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.DownLoadActivity" />
         <activity android:name=".activity.GoodsListActivity" />
-        <activity android:name=".activity.CartActivity"></activity>
-        <activity android:name=".activity.GoodsInfoActivity"
-            android:launchMode="singleTask"></activity>
-        <activity android:name=".activity.QRCodeActivity"></activity>
+        <activity android:name=".activity.CartActivity" />
+        <activity
+            android:name=".activity.GoodsInfoActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.QRCodeActivity" />
 
         <!-- alipay sdk begin -->
         <activity
@@ -68,6 +68,7 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <!-- alipay sdk end -->
+        <activity android:name=".activity.SearchActivity"></activity>
     </application>
 
 </manifest>

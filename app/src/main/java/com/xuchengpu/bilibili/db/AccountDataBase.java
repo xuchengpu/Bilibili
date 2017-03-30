@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.xuchengpu.bilibili.table.AccountTable;
+import com.xuchengpu.bilibili.table.HistoryTable;
 
 /**
  * Created by 许成谱 on 2017/3/26 16:23.
@@ -23,6 +24,7 @@ public class AccountDataBase extends SQLiteOpenHelper {
         //创建数据库
         //将具体执行的语句封装到AccountTable中的CREATE_TABLE变量中
         db.execSQL(AccountTable.CREATE_TABLE);
+        db.execSQL(HistoryTable.CREATE_TABLE);
 
     }
 

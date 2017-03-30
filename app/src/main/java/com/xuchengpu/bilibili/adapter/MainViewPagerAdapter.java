@@ -26,7 +26,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return data.size();
+        return titles.length;
     }
 
     @Override

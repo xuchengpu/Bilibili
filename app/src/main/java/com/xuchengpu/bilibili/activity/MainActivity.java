@@ -15,6 +15,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,8 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +36,10 @@ import android.widget.Toast;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.adapter.HistoryListAdapter;
 import com.xuchengpu.bilibili.adapter.MainViewPagerAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
+import com.xuchengpu.bilibili.dao.HistoryDao;
 import com.xuchengpu.bilibili.utils.CacheUtils;
 import com.xuchengpu.bilibili.utils.ConstantUtils;
 import com.xuchengpu.bilibili.utils.UiUtils;
@@ -44,6 +51,7 @@ import com.xuchengpu.bilibili.viewpager.partition.PartitionViewPager;
 import com.xuchengpu.bilibili.viewpager.recommand.RecommandViewPager;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -83,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final int REQUEST_CODE = 1;
     private PopupWindow window;
     private int count = 1;
+    private List<String> historys;
+    private LinearLayout ll_history;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,9 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
     private void initListener() {
         viewPagerMain.setCurrentItem(1);
-
     }
 
     public void Scan() {
@@ -261,6 +271,78 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.alpha = 0.6f;
         getWindow().setAttributes(params);
+
+        // 5 在顶部显示
+        window.showAtLocation(this.findViewById(R.id.iv_download_search),
+                Gravity.TOP, 0, 0);
+
+        //初始化数据
+        final EditText et_search_discover = (EditText) view.findViewById(R.id.et_search_discover);
+        ImageView iv_search = (ImageView) view.findViewById(R.id.iv_search);
+        ImageView iv_voice_search = (ImageView) view.findViewById(R.id.iv_voice_search);
+        ll_history = (LinearLayout) view.findViewById(R.id.ll_history);
+        final ListView lv_search = (ListView) view.findViewById(R.id.lv_search);
+        //不管有没有数据，进来先隐藏
+        ll_history.setVisibility(View.GONE);
+        //从数据库拿数据
+        historys = new ArrayList<>();
+        historys = HistoryDao.getDao().getAll();
+        //给历史记录列表设置适配器
+        final HistoryListAdapter adapter = new HistoryListAdapter(MainActivity.this, historys);
+        lv_search.setAdapter(adapter);
+        //对搜索框设置监听
+        et_search_discover.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //搜索框获得焦点后，再判断有没有数据，再决定要不要显示列表
+                if (historys != null && historys.size() > 0) {
+                    ll_history.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //点击搜索图标 保存数据 实现跳转
+        iv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text=et_search_discover.getText().toString().trim();
+                boolean isAdded=false;
+                if(!TextUtils.isEmpty(text)) {
+                    //查询以前是否有该条记录
+                    for(int i = 0; i < historys.size(); i++) {
+                        if(historys.get(i).equals(text)) {
+                            isAdded=true;
+                        }
+                    }
+                    //没有添加过 则添加到数据库
+                    if(!isAdded) {
+                        HistoryDao.getDao().add(text);
+                    }
+                    Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                    intent.putExtra(ConstantUtils.SEARCH,text);
+                    startActivity(intent);
+                    window.dismiss();
+                    window = null;
+                }
+            }
+        });
+
+        //集成科大讯飞
+
+
+
+
+
         //消失后恢复
         window.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -271,12 +353,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getWindow().setAttributes(params);
             }
         });
-
-        // 5 在顶部显示
-        window.showAtLocation(this.findViewById(R.id.iv_download_search),
-                Gravity.TOP, 0, 0);
-
-
     }
 
     /**

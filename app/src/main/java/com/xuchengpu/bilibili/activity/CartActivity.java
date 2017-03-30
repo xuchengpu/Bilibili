@@ -91,7 +91,6 @@ public class CartActivity extends AppCompatActivity {
         initData();
 
     }
-
     private void initView() {
         /*
         * 处理右上角编辑与完成的textview按钮代码
@@ -119,6 +118,7 @@ public class CartActivity extends AppCompatActivity {
             }
         });
     }
+
     //隐藏底部删除购物车商品栏
     private void hideDelete() {
         //1.设置编辑
@@ -130,12 +130,13 @@ public class CartActivity extends AppCompatActivity {
         //4.设置文本为-编辑
         tvShopcartEdit.setText("编辑");
         //5.把所有的数据设置勾选择状态
-        if(adapter != null){
+        if (adapter != null) {
             adapter.checkAll_none(true);
 //            adapter.checkAll();
             adapter.showTotalPrice();
         }
     }
+
     //显示底部删除购物车商品栏
     private void showDelete() {
         //1.设置完成
@@ -147,7 +148,7 @@ public class CartActivity extends AppCompatActivity {
         //4.设置文本为-完成
         tvShopcartEdit.setText("完成");
         //5.把所有的数据设置非选择状态
-        if(adapter != null){
+        if (adapter != null) {
             adapter.checkAll_none(false);
 //            adapter.checkAll();
             adapter.showTotalPrice();
@@ -167,36 +168,37 @@ public class CartActivity extends AppCompatActivity {
     private void showData() {
 
         List<User> users = mUserDao.loadAll();
-        Log.e("TAG", "CartActivity.user=="+users);
-        List<GoodsBean> goodsBeens=new ArrayList<>();
-        for(int i = 0; i < users.size(); i++) {
-          GoodsBean goodsBean=new GoodsBean();
+        Log.e("TAG", "CartActivity.user==" + users);
+        List<GoodsBean> goodsBeens = new ArrayList<>();
+        for (int i = 0; i < users.size(); i++) {
+            GoodsBean goodsBean = new GoodsBean();
             goodsBean.setCover_price(users.get(i).getCover_price());
             goodsBean.setFigure(users.get(i).getFigure());
             goodsBean.setName(users.get(i).getName());
             goodsBean.setNumber(users.get(i).getNumber());
             goodsBean.setChecked(users.get(i).getIsChecked());
-            goodsBean.setProduct_id(users.get(i).getId()+"");
+            goodsBean.setProduct_id(users.get(i).getId() + "");
             goodsBeens.add(goodsBean);
         }
 
 //        List<GoodsBean> goodsBeens = CartStorage.getInstance(mContext).getAllData();
         //有数据，影藏空界面
-        if(goodsBeens!=null&goodsBeens.size()>0) {
+        if (goodsBeens != null & goodsBeens.size() > 0) {
             llEmptyShopcart.setVisibility(View.GONE);
             /*
             * 设置适配器
             * */
-            adapter = new ShoppingCartAdapter(this,goodsBeens,tvShopcartTotal,checkboxAll,checkboxDeleteAll);
+            adapter = new ShoppingCartAdapter(this, goodsBeens, tvShopcartTotal, checkboxAll, checkboxDeleteAll);
             recyclerview.setAdapter(adapter);
             //设置布局管理器
-            recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+            recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             //没有数据，显示空界面
-        }else{
+        } else {
             llEmptyShopcart.setVisibility(View.VISIBLE);
 
         }
     }
+
     @OnClick({R.id.tv_shopcart_edit, R.id.recyclerview, R.id.checkbox_all, R.id.tv_shopcart_total, R.id.btn_check_out, R.id.ll_check_all, R.id.checkbox_delete_all, R.id.btn_delete, R.id.btn_collection, R.id.ll_delete, R.id.iv_empty, R.id.tv_empty_cart_tobuy, R.id.ll_empty_shopcart})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -207,7 +209,7 @@ public class CartActivity extends AppCompatActivity {
             //全选按钮
             case R.id.checkbox_all:
                 //得到全选的CheckBox按钮状态
-                boolean ischecked=checkboxAll.isChecked();
+                boolean ischecked = checkboxAll.isChecked();
                 //调用adapter中的方法具体操作每个item数据
                 adapter.checkAll_none(ischecked);
                 //刷新价格
@@ -224,7 +226,7 @@ public class CartActivity extends AppCompatActivity {
                 break;
             //删除状态下的全选按钮
             case R.id.checkbox_delete_all:
-                ischecked=checkboxDeleteAll.isChecked();
+                ischecked = checkboxDeleteAll.isChecked();
                 adapter.checkAll_none(ischecked);
                 adapter.showTotalPrice();
                 break;
@@ -254,13 +256,13 @@ public class CartActivity extends AppCompatActivity {
                 break;
         }
     }
+
     //检查是否为空数据，来决定显示的界面
     private void showEempty() {
-        if(adapter.getItemCount() == 0){
+        if (adapter.getItemCount() == 0) {
             llEmptyShopcart.setVisibility(View.VISIBLE);
         }
     }
-
 
 
     // 商户PID
@@ -325,9 +327,10 @@ public class CartActivity extends AppCompatActivity {
                 default:
                     break;
             }
-        };
-    };
+        }
 
+        ;
+    };
 
 
     public void pay() {
@@ -382,9 +385,9 @@ public class CartActivity extends AppCompatActivity {
         Thread payThread = new Thread(payRunnable);
         payThread.start();
     }
+
     /**
      * create the order info. 创建订单信息
-     *
      */
     private String getOrderInfo(String subject, String body, String price) {
 
@@ -439,7 +442,6 @@ public class CartActivity extends AppCompatActivity {
 
     /**
      * get the out_trade_no for an order. 生成商户订单号，该值在商户端应保持唯一（可自定义格式规范）
-     *
      */
     private String getOutTradeNo() {
         SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
@@ -455,8 +457,7 @@ public class CartActivity extends AppCompatActivity {
     /**
      * sign the order info. 对订单信息进行签名
      *
-     * @param content
-     *            待签名订单信息
+     * @param content 待签名订单信息
      */
     private String sign(String content) {
         return SignUtils.sign(content, RSA_PRIVATE);
@@ -464,7 +465,6 @@ public class CartActivity extends AppCompatActivity {
 
     /**
      * get the sign type we use. 获取签名方式
-     *
      */
     private String getSignType() {
         return "sign_type=\"RSA\"";

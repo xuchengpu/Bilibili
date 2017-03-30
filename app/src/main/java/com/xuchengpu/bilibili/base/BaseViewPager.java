@@ -23,11 +23,12 @@ public abstract class BaseViewPager {
     /**
      * 上下文
      */
-    public final Context mContext;
+    public  Context mContext;
     /**
      * 代表各个详情页面的实例，视图
      */
     public View rootView;
+
 
 
     public BaseViewPager(Context context) {
