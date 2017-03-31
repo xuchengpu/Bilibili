@@ -28,4 +28,8 @@
     <string name="about_developers">关于我</string>
     <string name="about">关于哔哩哔哩</string>
     <string name="about_version">V1.0</string>
+
+    <!--科大讯飞-->
+    <string name="pref_key_iat_show">iat_show</string>
+    <string name="text_begin">请开始说话…</string>
 </resources>

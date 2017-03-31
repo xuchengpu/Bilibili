@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.anye.greendao.gen.DaoMaster;
 import com.anye.greendao.gen.DaoSession;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import java.util.ArrayList;
@@ -77,6 +79,9 @@ public class MyApplication extends Application {
         //极光推送
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+
+        //科大讯飞
+        SpeechUtility.createUtility(context, SpeechConstant.APPID +"=58de3729");
     }
     public static MyApplication getInstances(){
         return instances;

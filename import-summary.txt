@@ -7,8 +7,8 @@ The following files were *not* copied into the new Gradle project; you
 should evaluate whether these are still needed in your project and if
 so manually move them:
 
-* LICENSE.txt
-* pom.xml
+* default.properties
+* proguard.cfg
 
 Replaced Jars with Dependencies:
 --------------------------------
@@ -27,9 +27,14 @@ Moved Files:
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => SlidingMenuLibrary\src\main\AndroidManifest.xml
-* res\ => SlidingMenuLibrary\src\main\res\
-* src\ => SlidingMenuLibrary\src\main\java\
+* AndroidManifest.xml => speechDemo\src\main\AndroidManifest.xml
+* assets\ => speechDemo\src\main\assets\
+* libs\armeabi\libmsc.so => speechDemo\src\main\jniLibs\armeabi\libmsc.so
+* libs\Msc.jar => speechDemo\libs\Msc.jar
+* libs\Sunflower.jar => speechDemo\libs\Sunflower.jar
+* lint.xml => speechDemo\lint.xml
+* res\ => speechDemo\src\main\res\
+* src\ => speechDemo\src\main\java\
 
 Missing Android Support Repository:
 -----------------------------------

@@ -1,2 +1,3 @@
 include ':app', 'demo', "teacher", 'MaterialDesign', ':retrofitdownload'
 include ':SlidingMenuLibrary'
+include ':speechDemo'

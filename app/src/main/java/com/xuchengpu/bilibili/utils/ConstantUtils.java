@@ -17,6 +17,8 @@ public class ConstantUtils {
     public static final String GOODSBEAN = "goodsbean";
     //搜索跳转flag
     public static final String SEARCH = "search";
+    //科大讯飞所用
+    public static final String PREFER_NAME = "com.iflytek.setting";
 
 
 
