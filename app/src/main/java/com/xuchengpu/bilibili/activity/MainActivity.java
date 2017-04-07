@@ -71,12 +71,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -509,12 +510,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             Toast.makeText(MainActivity.this, "再次点击退出", Toast.LENGTH_SHORT).show();
             count++;
-            new Timer().schedule(new TimerTask() {
+            /*new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
                     count = 1;
                 }
-            }, 2000);
+            }, 2000);*/
+
+            Observable.timer(2, TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+                @Override
+                public void call(Long aLong) {
+                    count = 1;
+                }
+            });
 //            CountDownTimer timer = new CountDownTimer(10000, 1000) {
 //              第一个参数是总时间 第二个参数间隔时间
 //                @Override

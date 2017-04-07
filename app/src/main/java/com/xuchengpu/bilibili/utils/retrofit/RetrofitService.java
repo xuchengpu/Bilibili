@@ -20,6 +20,7 @@ import retrofit2.http.Url;
 public interface RetrofitService {
    /* @GET("{id}")
     Call<GoodListBean> listRepos(@Path("id") String url);*/
+
     @GET()
     Call<GoodListBean> listRepos(@Url String url);
 
