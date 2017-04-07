@@ -50,7 +50,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_menu_top_game_center"/>
+            android:src="@drawable/bluetooth"/>
         <ImageView
             android:id="@+id/iv_toolbar_menu_download"
             android:layout_width="22dp"

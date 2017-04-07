@@ -49,6 +49,7 @@ import com.iflytek.sunflower.FlowerCollector;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.bluetooth.BluetoothActivity;
 import com.xuchengpu.bilibili.adapter.HistoryListAdapter;
 import com.xuchengpu.bilibili.adapter.MainViewPagerAdapter;
 import com.xuchengpu.bilibili.base.BaseViewPager;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String mEngineType = SpeechConstant.TYPE_CLOUD;
     private Toast mToast;
     int ret = 0; // 函数调用返回值
+    private Intent intent;
 
 
     @Override
@@ -429,9 +431,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.iv_new_feature_pink_dot:
                 break;
             case R.id.iv_menu_top_game_center:
+                intent = new Intent(this, BluetoothActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_toolbar_menu_download:
-                Intent intent = new Intent(this, DownLoadActivity.class);
+                 intent = new Intent(this, DownLoadActivity.class);
                 startActivity(intent);
                 break;
             case R.id.iv_download_search:
