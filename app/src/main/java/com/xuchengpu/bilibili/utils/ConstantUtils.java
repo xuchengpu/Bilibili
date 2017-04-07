@@ -53,13 +53,13 @@ public class ConstantUtils {
     //视频页面播放地址
     public static final String VIDEOURL="http://dl.live-play.acgvideo.com/live-dl/632161/live_6188477_1561069.flv?wsSecret=ff7ac23ee5643dca9277a5a2dd7ba429&wsTime=1490687221";
     //商品列表
-    public static final String GOODLIST="http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
+    public static final String GOODLIST="api/product/list.do?pn=1&ps=6";
     //搜素的头
     public static String SEACHER_TOP_URL = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=";
 
     //搜索的尾
     public static String SEACHER_BUTTON_URL = "&mobi_app=android&platform=android&pn=1&ps=20";
 
-
+    public static final String GOODLISTBASEURL="http://bmall.bilibili.com/";
 
 }

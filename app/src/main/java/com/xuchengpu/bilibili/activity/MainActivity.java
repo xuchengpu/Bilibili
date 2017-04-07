@@ -138,7 +138,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        //科大讯飞初始化
         initFly();
+
+
         initView();
         initViewPager();
         setAdapter();
@@ -149,7 +152,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void initListener() {
-        viewPagerMain.setCurrentItem(1);
+        setCurrentItem(1);
+    }
+    public void setCurrentItem(int position){
+        viewPagerMain.setCurrentItem(position);
     }
 
     public void Scan() {
@@ -540,7 +546,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    //集成科大续费
+
+
+
+
+    //集成科大讯飞
 
     private void initFly() {
         // 初始化识别无UI识别对象
@@ -593,6 +603,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
     private void showTip(final String str) {
         mToast.setText(str);
         mToast.show();
@@ -635,7 +646,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onVolumeChanged(int volume, byte[] data) {
             showTip("当前正在说话，音量大小：" + volume);
-            Log.d("tag", "返回音频数据："+data.length);
+            Log.d("tag", "返回音频数据：" + data.length);
         }
 
         @Override
@@ -648,6 +659,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //	}
         }
     };
+
     private void printResult(RecognizerResult results) {
         String text = JsonParser.parseIatResult(results.getResultString());
 
@@ -726,8 +738,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效
-        mIat.setParameter(SpeechConstant.AUDIO_FORMAT,"wav");
-        mIat.setParameter(SpeechConstant.ASR_AUDIO_PATH, Environment.getExternalStorageDirectory()+"/msc/iat.wav");
+        mIat.setParameter(SpeechConstant.AUDIO_FORMAT, "wav");
+        mIat.setParameter(SpeechConstant.ASR_AUDIO_PATH, Environment.getExternalStorageDirectory() + "/msc/iat.wav");
     }
 
 }

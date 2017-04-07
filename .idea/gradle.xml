@@ -9,9 +9,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Bluetooth" />
+            <option value="$PROJECT_DIR$/MVPDemo" />
             <option value="$PROJECT_DIR$/MaterialDesign" />
+            <option value="$PROJECT_DIR$/PhotoView_library" />
             <option value="$PROJECT_DIR$/SlidingMenuLibrary" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bluetoothservice" />
             <option value="$PROJECT_DIR$/demo" />
             <option value="$PROJECT_DIR$/retrofitdownload" />
             <option value="$PROJECT_DIR$/speechDemo" />

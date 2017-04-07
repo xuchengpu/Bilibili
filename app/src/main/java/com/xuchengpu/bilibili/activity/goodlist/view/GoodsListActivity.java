@@ -1,5 +1,6 @@
-package com.xuchengpu.bilibili.activity;
+package com.xuchengpu.bilibili.activity.goodlist.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -11,15 +12,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.CartActivity;
+import com.xuchengpu.bilibili.activity.GoodsInfoActivity;
+import com.xuchengpu.bilibili.activity.goodlist.presenter.GoodListPresenter;
 import com.xuchengpu.bilibili.adapter.GoodListAdapter;
 import com.xuchengpu.bilibili.bean.GoodListBean;
 import com.xuchengpu.bilibili.bean.GoodsBean;
 import com.xuchengpu.bilibili.utils.ConstantUtils;
-import com.xuchengpu.bilibili.utils.RequestMethod;
-import com.xuchengpu.bilibili.utils.TransferData;
 import com.xuchengpu.bilibili.view.SpaceItemDecoration;
 
 import java.util.List;
@@ -28,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class GoodsListActivity extends AppCompatActivity {
+public class GoodsListActivity extends AppCompatActivity implements IGoodListView {
 
 
     @BindView(R.id.ib_goods_list_back)
@@ -53,52 +55,22 @@ public class GoodsListActivity extends AppCompatActivity {
     RecyclerView recyclerview;
     @BindView(R.id.dl_left)
     DrawerLayout dlLeft;
+    private GoodListPresenter presenter;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_list);
         ButterKnife.bind(this);
-
+        progress=new ProgressDialog(this);
+        progress.setTitle("提示");
+        progress.setMessage("正在联网请求数据");
 
         //请求网络
-        getDataFormNet(ConstantUtils.GOODLIST);
+        presenter = new GoodListPresenter(this);
+        presenter.getDataFromNet();
 
-        initView();
-
-    }
-
-    private void initView() {
-
-    }
-
-    private void getDataFormNet(String goodlist) {
-        RequestMethod.getDataFromNet(goodlist, new TransferData() {
-            @Override
-            public void onsucess(String data) {
-                if (data != null) {
-                    processData(data);
-                }
-            }
-
-            @Override
-            public void failure(String data) {
-
-            }
-        });
-
-    }
-
-    private void processData(String json) {
-        GoodListBean bean = JSON.parseObject(json, GoodListBean.class);
-        List<GoodListBean.ResultBean.RecordsBean> datas = bean.getResult().getRecords();
-        if (datas != null && datas.size() > 0) {
-            datas.addAll(datas);
-            datas.addAll(datas);
-            datas.addAll(datas);
-            datas.addAll(datas);
-            setAdapter(datas);
-        }
     }
 
     private void setAdapter(List<GoodListBean.ResultBean.RecordsBean> datas) {
@@ -117,7 +89,6 @@ public class GoodsListActivity extends AppCompatActivity {
                 goodsBean.setName(data.getTitle());
                 goodsBean.setCover_price(data.getVipPlusPrice() + "");
                 goodsBean.setFigure(data.getImgUrl());
-
                 Intent intent = new Intent(GoodsListActivity.this, GoodsInfoActivity.class);
                 intent.putExtra(ConstantUtils.GOODSBEAN, goodsBean);
                 startActivity(intent);
@@ -143,5 +114,31 @@ public class GoodsListActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void success(List<GoodListBean.ResultBean.RecordsBean> datas) {
+        setAdapter(datas);
+
+    }
+
+    @Override
+    public void failure(Throwable t) {
+        Toast.makeText(GoodsListActivity.this, "请求出错："+t.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void hideProgress() {
+        progress.hide();
+    }
+
+    @Override
+    public void showProgress() {
+        progress.show();
+    }
+
+    @Override
+    public String getUrl() {
+       return ConstantUtils.GOODLIST;
     }
 }

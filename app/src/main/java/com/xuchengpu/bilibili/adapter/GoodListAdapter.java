@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.activity.GoodsListActivity;
+import com.xuchengpu.bilibili.activity.goodlist.view.GoodsListActivity;
 import com.xuchengpu.bilibili.bean.GoodListBean;
 
 import java.util.List;

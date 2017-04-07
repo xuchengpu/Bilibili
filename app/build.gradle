@@ -82,4 +82,10 @@ dependencies {
     // 此处以JCore 1.1.1 版本为例。
     compile files('libs/Msc.jar')
     compile files('libs/Sunflower.jar')
+    compile project(':PhotoView_library')
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    //核心库
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    //用来Gson解析
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
 }

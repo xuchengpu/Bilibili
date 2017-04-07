@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.alipay.sdk.app.PayTask;
 import com.anye.greendao.gen.UserDao;
 import com.xuchengpu.bilibili.R;
+import com.xuchengpu.bilibili.activity.goodlist.view.GoodsListActivity;
 import com.xuchengpu.bilibili.adapter.ShoppingCartAdapter;
 import com.xuchengpu.bilibili.bean.GoodsBean;
 import com.xuchengpu.bilibili.bean.User;

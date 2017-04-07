@@ -64,8 +64,10 @@
             android:name=".activity.VideoDetailsActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.DownLoadActivity" />
-        <activity android:name=".activity.GoodsListActivity" />
+        <activity android:name=".activity.goodlist.view.GoodsListActivity" />
         <activity android:name=".activity.CartActivity" />
+        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name="com.xuchengpu.bilibili.activity.PicassoSampleActivity"></activity>
         <activity
             android:name=".activity.GoodsInfoActivity"
             android:launchMode="singleTask" />
@@ -80,7 +82,25 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <!-- alipay sdk end -->
-        <activity android:name=".activity.SearchActivity"></activity>
+
+
+        <!-- 极光推送-->
+        <!-- User defined.  For test only  用户自定义的广播接收器-->
+        <receiver
+            android:name="com.xuchengpu.bilibili.receiver.MyReceiver"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.xuchengpu.bilibili" />
+            </intent-filter>
+        </receiver>
+
+
     </application>
 
 </manifest>

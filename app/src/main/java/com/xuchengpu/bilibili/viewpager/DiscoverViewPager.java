@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.xuchengpu.bilibili.R;
-import com.xuchengpu.bilibili.activity.GoodsListActivity;
+import com.xuchengpu.bilibili.activity.goodlist.view.GoodsListActivity;
 import com.xuchengpu.bilibili.activity.MainActivity;
 import com.xuchengpu.bilibili.activity.TopicCenterActivity;
 import com.xuchengpu.bilibili.base.BaseViewPager;
