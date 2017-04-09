@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.anye.greendao.gen.DaoMaster;
 import com.anye.greendao.gen.DaoSession;
+import com.baidu.mapapi.SDKInitializer;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -64,6 +65,11 @@ public class MyApplication extends Application {
         super.onCreate();
 
         context=this;
+
+        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+        //注意该方法要再setContentView方法之前实现
+        SDKInitializer.initialize(this);
+
         //得到当前线程
         threadid = android.os.Process.myPid();
         downloadData=new ArrayList<>();

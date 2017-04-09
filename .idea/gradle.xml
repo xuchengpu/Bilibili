@@ -9,6 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/BaiduMapSDK_BikeNavi_Demo" />
+            <option value="$PROJECT_DIR$/BaiduMapsApiASDemo" />
             <option value="$PROJECT_DIR$/Bluetooth" />
             <option value="$PROJECT_DIR$/MVPDemo" />
             <option value="$PROJECT_DIR$/MaterialDesign" />
@@ -20,6 +22,7 @@
             <option value="$PROJECT_DIR$/retrofitdownload" />
             <option value="$PROJECT_DIR$/speechDemo" />
             <option value="$PROJECT_DIR$/teacher" />
+            <option value="$PROJECT_DIR$/teacherBaiduMap" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

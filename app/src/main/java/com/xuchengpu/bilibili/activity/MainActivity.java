@@ -493,7 +493,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.item_app:
-                // 应用推荐
+                // 应用推荐  百度地图
+                intent = new Intent(this, BaiduMapActivity.class);
+                startActivity(intent);
 
                 return true;
 
